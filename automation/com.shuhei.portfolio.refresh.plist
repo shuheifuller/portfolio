@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.shuhei.portfolio.refresh</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/refresh.sh</string>
+  </array>
+
+  <!-- Run once a day at 09:00 local time. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>9</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/launchd.err.log</string>
+</dict>
+</plist>

@@ -1,0 +1,41 @@
+{
+  "_comment": "Hand-curation layer, keyed by project id. Any field here overrides the generated value and survives every refresh. Use it to rename, hide, feature, reorder, fix a misclassified type/link, or rewrite description/benefit. Items omitted here use fully auto-generated values.",
+
+  "matefc-mock-app": {
+    "name": "MateFC",
+    "featured": true,
+    "order": 1
+  },
+  "english-vocab": {
+    "name": "English Vocabulary",
+    "type": "app",
+    "link": "https://shuheifuller.github.io/english-vocab/vocab.html",
+    "linkLabel": "Live demo",
+    "featured": true,
+    "order": 2
+  },
+  "block-survival": {
+    "name": "Block Survival",
+    "linkLabel": "Play",
+    "featured": true,
+    "order": 3
+  },
+  "anzac-of-zombies": {
+    "name": "Anzac of Zombies",
+    "order": 4
+  },
+  "aussie-ramenman-insta": {
+    "name": "Aussie Ramenman",
+    "order": 5
+  },
+  "minecraft_kanji_quest": {
+    "name": "Minecraft Kanji Quest",
+    "linkLabel": "Play",
+    "order": 6
+  },
+  "tomlog-interviewscript": {
+    "name": "Tomlog Interview Script",
+    "hidden": true,
+    "order": 7
+  }
+}

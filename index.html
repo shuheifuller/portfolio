@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shuhei Uto — Apps, games & automations</title>
+  <meta name="description" content="A working portfolio of apps, web pages, and automations built with Claude Code and Visual Studio." />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="#top">Shuhei&nbsp;Uto</a>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <h1>I design and build apps, games, and automations.</h1>
+      <p class="lead">
+        A working portfolio of things I've shipped with Claude Code and Visual Studio —
+        from bilingual web apps to browser games and quiet little automations. This list
+        keeps itself up to date.
+      </p>
+      <div class="hero-meta">
+        <span>Sydney, Australia</span>
+        <a href="https://github.com/shuheifuller" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="mailto:shoeheyu@gmail.com">shoeheyu@gmail.com</a>
+      </div>
+    </section>
+
+    <section id="work" class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="count" id="work-count"></span>
+      </div>
+      <div class="work-list" id="work-list">
+        <p class="loading">Loading projects…</p>
+      </div>
+    </section>
+
+    <section id="services" class="wrap">
+      <div class="section-head"><h2>What I build</h2></div>
+      <div class="services">
+        <div class="service">
+          <div class="num">01</div>
+          <h3>Web apps</h3>
+          <p>Bilingual, mobile-first React and Next.js apps — portals, dashboards, and tools.</p>
+        </div>
+        <div class="service">
+          <div class="num">02</div>
+          <h3>Browser games</h3>
+          <p>Zero-install games in Three.js and canvas that the whole family can play on any device.</p>
+        </div>
+        <div class="service">
+          <div class="num">03</div>
+          <h3>Automations</h3>
+          <p>Python and userscript automations that quietly handle daily, repetitive work.</p>
+        </div>
+        <div class="service">
+          <div class="num">04</div>
+          <h3>Learning tools</h3>
+          <p>PWAs and quizzes for vocabulary and kanji practice, built to make study stick.</p>
+        </div>
+        <div class="service">
+          <div class="num">05</div>
+          <h3>AI integration</h3>
+          <p>Claude-powered features for analysis, summarisation, and content generation.</p>
+        </div>
+        <div class="service">
+          <div class="num">06</div>
+          <h3>Static sites</h3>
+          <p>Fast, framework-free pages — like this one — that deploy straight to GitHub Pages.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact wrap">
+      <div class="section-head"><h2>Contact</h2></div>
+      <h2>Have something you'd like built? Let's talk.</h2>
+      <p><a class="big" href="mailto:shoeheyu@gmail.com">shoeheyu@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <span>© <span id="year">2026</span> Shuhei Uto</span>
+    <span>
+      <a href="https://github.com/shuheifuller" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:shoeheyu@gmail.com">Email</a>
+    </span>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="./assets/main.js"></script>
+</body>
+</html>
