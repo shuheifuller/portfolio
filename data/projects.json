@@ -28,6 +28,9 @@
           "Membership tiers — Regular, Academy and Trial — each styled distinctly",
           "Trial-to-membership conversion, attendance, news and billing flows",
           "Built with React, TypeScript and Vite"
+        ],
+        "images": [
+          { "src": "./assets/img/matefc-mock-app/cover.png", "caption": "Bilingual sign-in — choose the Parents & Students or Coach & Admin flow" }
         ]
       }
     },
@@ -56,6 +59,9 @@
           "Themed wiki: business, idioms, Aussie slang, medical, legal, social",
           "Installable PWA — works offline on phone or desktop",
           "Google sign-in"
+        ],
+        "images": [
+          { "src": "./assets/img/english-vocab/cover.png", "caption": "Sign-in screen for the vocabulary PWA" }
         ]
       }
     },
@@ -84,6 +90,9 @@
           "Stat upgrades for HP, damage, reload and move speed",
           "Keyboard/mouse and full iPad touch controls",
           "Single-file Three.js, no build step"
+        ],
+        "images": [
+          { "src": "./assets/img/block-survival/cover.png", "caption": "Surviving a wave in the Minecraft-style arena — HUD, tokens and weapon ammo" }
         ]
       }
     },
@@ -112,6 +121,9 @@
           "Kid-friendly — soccer balls instead of weapons",
           "Runs on iPads via Add to Home Screen",
           "Node.js WebSocket server with a canvas client"
+        ],
+        "images": [
+          { "src": "./assets/img/anzac-of-zombies/cover.png", "caption": "Character select — pick Ren or Haru, then play solo or co-op" }
         ]
       }
     },
@@ -165,6 +177,9 @@
           "Daily kanji practice quiz",
           "Minecraft-inspired visual style",
           "Quick, repeatable drills for kids"
+        ],
+        "images": [
+          { "src": "./assets/img/minecraft_kanji_quest/cover.png", "caption": "Home screen — KANJIMINE QUEST in a Minecraft style" }
         ]
       }
     }
