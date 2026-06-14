@@ -1,9 +1,16 @@
 # Shuhei Uto — Portfolio
 
-A single-page, zero-build portfolio that **auto-populates** from real dev work:
-public GitHub repos (`shuheifuller`) + local projects under `~/dev`. Each entry shows a
-short description, a benefit, and a link. Styled after [flexdigital.io](https://flexdigital.io)
+A zero-build portfolio that **auto-populates** from real dev work: public GitHub repos
+(`shuheifuller`) + local projects under `~/dev`. Styled after [flexdigital.io](https://flexdigital.io)
 — monochrome, generous whitespace, fixed nav, one vertical Work list.
+
+**The apps are shared privately.** The portfolio does **not** link out to the apps or their
+repos. Each Work row links to an on-site **detail page** (`project.html?id=<id>`) that explains
+the project with an overview, highlights, and screenshots — but never exposes the app's URL.
+
+> ⚠️ Removing links hides the apps from the portfolio, but any project still published on GitHub
+> Pages or in a public repo remains reachable by direct URL. To truly restrict access, make those
+> repos private (disables free Pages) or password-gate the live demos — that's a separate step.
 
 ## How it works
 
@@ -16,7 +23,18 @@ discover.mjs ──▶ projects.raw.json ──▶ /refresh-portfolio (Claude wr
 - **`scripts/discover.mjs`** — deterministic. Queries `gh`, scans `~/dev/{Personal,Family,Project,Work}`, classifies each project (`app` / `html-page` / `automation` / `userscript` / `project`), dedupes local↔GitHub by repo name, and **excludes private repos**. Writes `data/projects.raw.json`.
 - **`/refresh-portfolio`** (Claude Code command) — runs discovery, then writes the one-sentence `description` + `benefit` for any *new* project, applies `overrides.json`, and writes `data/projects.json`. Already-approved prose is never rewritten.
 - **`data/overrides.json`** — your curation layer, keyed by project `id`. Anything you set (name, type, link, `featured`, `hidden`, `order`, custom prose) wins and survives every refresh.
-- **`index.html` + `assets/`** — static page that `fetch`es `data/projects.json`. No framework, no build.
+- **`index.html` + `assets/`** — static Work list that `fetch`es `data/projects.json`. No framework, no build.
+- **`project.html` + `assets/detail.js`** — detail page rendered from the same JSON by `?id=`, with an image gallery.
+- **`scripts/gen-placeholders.mjs`** — writes `assets/img/<id>/cover.svg` for any project missing a real screenshot (never overwrites one you've added).
+
+## Adding real screenshots
+
+Each project's images live in `assets/img/<id>/`. To replace the generated placeholder:
+
+1. Drop a real image in, e.g. `assets/img/block-survival/cover.svg` (or `.png`/`.jpg`).
+2. For more than one image, add files and list them in that project's `detail.images` array in
+   `data/projects.json` (or in `data/overrides.json`): `"images": [{"src": "./assets/img/block-survival/1.png", "caption": "Wave 5"}]`.
+3. Commit and push.
 
 ## Update the portfolio
 

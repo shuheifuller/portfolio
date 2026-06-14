@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Minecraft Kanji Quest cover">
+  <defs>
+    <linearGradient id="g" gradientTransform="rotate(72)">
+      <stop offset="0" stop-color="hsl(0 0% 14%)"/>
+      <stop offset="1" stop-color="hsl(0 0% 28%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <g font-family="Inter, -apple-system, 'Helvetica Neue', Arial, sans-serif">
+    <text x="80" y="118" font-size="22" letter-spacing="5" fill="#9ca3af">WEB PAGE</text>
+    <text x="76" y="370" font-size="60" font-weight="600" letter-spacing="-2" fill="#f5f5f5">Minecraft Kanji Quest</text>
+    <text x="80" y="600" font-size="20" fill="#6b7280">Preview placeholder · drop a screenshot in assets/img/minecraft_kanji_quest/</text>
+  </g>
+</svg>

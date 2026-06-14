@@ -23,7 +23,6 @@ function renderItem(p) {
   const head = el("div", "work-head");
   head.appendChild(el("span", "work-name", p.name));
   head.appendChild(el("span", "tag", TYPE_LABEL[p.type] || p.type));
-  if (!p.link) head.appendChild(el("span", "tag", "Local project"));
   body.appendChild(head);
 
   if (p.description) body.appendChild(el("p", "work-desc", p.description));
@@ -36,16 +35,11 @@ function renderItem(p) {
   }
   item.appendChild(body);
 
-  if (p.link) {
-    const a = el("a", "work-link");
-    a.href = p.link;
-    a.target = "_blank";
-    a.rel = "noopener";
-    a.innerHTML = `${p.linkLabel || "Open"} <span class="arrow">↗</span>`;
-    item.appendChild(a);
-  } else {
-    item.appendChild(el("span", "no-link", "Family / local build"));
-  }
+  // Every row links to its own detail page on this site — no outbound app links.
+  const a = el("a", "work-link");
+  a.href = p.link || `./project.html?id=${encodeURIComponent(p.id)}`;
+  a.innerHTML = `${p.linkLabel || "View details"} <span class="arrow">→</span>`;
+  item.appendChild(a);
   return item;
 }
 

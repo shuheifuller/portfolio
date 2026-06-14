@@ -1,6 +1,7 @@
 {
   "generatedAt": "2026-06-15T00:00:00Z",
   "owner": "shuheifuller",
+  "access": "Shared privately with family and friends.",
   "items": [
     {
       "id": "matefc-mock-app",
@@ -8,16 +9,27 @@
       "type": "app",
       "description": "A bilingual, phone-framed mock of a soccer-school parent and coach portal, covering membership tiers, enrolment, attendance, and billing.",
       "benefit": "Lets the school preview a complete parent-portal experience before committing to a paid platform.",
-      "link": "https://github.com/shuheifuller/matefc-mock-app",
-      "linkLabel": "View on GitHub",
-      "source": "github+local",
-      "repo": "https://github.com/shuheifuller/matefc-mock-app",
-      "private": false,
+      "link": "./project.html?id=matefc-mock-app",
+      "linkLabel": "View details",
       "tech": ["TypeScript", "React", "Vite"],
       "updatedAt": "2026-06-14T14:29:00Z",
       "featured": true,
       "hidden": false,
-      "order": 1
+      "order": 1,
+      "detail": {
+        "tagline": "A bilingual mock of a soccer-school parent & coach portal.",
+        "overview": [
+          "MateFC is a phone-framed web app that mocks the full experience of a soccer school's membership platform, in both English and Japanese.",
+          "It models two role flows — parents/students and coach/admin — across enrolment, attendance, billing, and academy/trial membership tiers, all driven by realistic static data so the whole journey can be demoed without a backend."
+        ],
+        "highlights": [
+          "Bilingual UI (English / 日本語) with one-tap language switching",
+          "Separate Parent/Student portal and Coach/Admin dashboard",
+          "Membership tiers — Regular, Academy and Trial — each styled distinctly",
+          "Trial-to-membership conversion, attendance, news and billing flows",
+          "Built with React, TypeScript and Vite"
+        ]
+      }
     },
     {
       "id": "english-vocab",
@@ -25,16 +37,27 @@
       "type": "app",
       "description": "An offline-capable vocabulary PWA with flashcards, quizzes, and a themed wiki of 412 words collected since 2020.",
       "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device.",
-      "link": "https://shuheifuller.github.io/english-vocab/vocab.html",
-      "linkLabel": "Live demo",
-      "source": "github+local",
-      "repo": "https://github.com/shuheifuller/english-vocab",
-      "private": false,
+      "link": "./project.html?id=english-vocab",
+      "linkLabel": "View details",
       "tech": ["HTML", "PWA"],
       "updatedAt": "2026-06-14T07:30:22Z",
       "featured": true,
       "hidden": false,
-      "order": 2
+      "order": 2,
+      "detail": {
+        "tagline": "A vocabulary PWA built from years of personal notes.",
+        "overview": [
+          "An offline-capable progressive web app that turns 412 words collected since 2020 into a structured study tool.",
+          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and signs in with Google so progress follows you across devices."
+        ],
+        "highlights": [
+          "412 words spanning 2020–2026",
+          "Flashcards, quizzes and progress statistics",
+          "Themed wiki: business, idioms, Aussie slang, medical, legal, social",
+          "Installable PWA — works offline on phone or desktop",
+          "Google sign-in"
+        ]
+      }
     },
     {
       "id": "block-survival",
@@ -42,16 +65,27 @@
       "type": "html-page",
       "description": "A Minecraft-flavoured, third-person wave-survival shooter built with Three.js in a single zero-build HTML file.",
       "benefit": "Gives the family an install-free game that runs in any browser, on desktop or iPad.",
-      "link": "https://shuheifuller.github.io/block-survival/",
-      "linkLabel": "Play",
-      "source": "github+local",
-      "repo": "https://github.com/shuheifuller/block-survival",
-      "private": false,
+      "link": "./project.html?id=block-survival",
+      "linkLabel": "View details",
       "tech": ["HTML", "Three.js"],
       "updatedAt": "2026-06-14T12:59:12Z",
       "featured": true,
       "hidden": false,
-      "order": 3
+      "order": 3,
+      "detail": {
+        "tagline": "A Minecraft-flavoured wave-survival shooter in the browser.",
+        "overview": [
+          "A third-person, Minecraft-styled survival shooter built with Three.js in a single zero-build HTML file.",
+          "Players fight endless waves of mobs, earn tokens from kills, and upgrade from a pistol all the way to a diamond cannon — playable with keyboard and mouse or with full on-screen iPad controls."
+        ],
+        "highlights": [
+          "Endless waves: zombies, skeletons, creepers, spiders, endermen and slimes",
+          "Weapon progression: Pistol → SMG → Rifle → Shotgun → Diamond Cannon",
+          "Stat upgrades for HP, damage, reload and move speed",
+          "Keyboard/mouse and full iPad touch controls",
+          "Single-file Three.js, no build step"
+        ]
+      }
     },
     {
       "id": "anzac-of-zombies",
@@ -59,16 +93,27 @@
       "type": "app",
       "description": "A two-player co-op browser game where kids climb a school tower kicking soccer balls at a cartoon zombie horde.",
       "benefit": "Gives two kids a shared, firearm-free co-op game across iPads on home Wi-Fi, with no app-store install.",
-      "link": null,
-      "linkLabel": null,
-      "source": "local",
-      "repo": null,
-      "private": false,
+      "link": "./project.html?id=anzac-of-zombies",
+      "linkLabel": "View details",
       "tech": ["Node.js", "WebSocket"],
       "updatedAt": null,
       "featured": false,
       "hidden": false,
-      "order": 4
+      "order": 4,
+      "detail": {
+        "tagline": "A two-player co-op game made for the kids.",
+        "overview": [
+          "A kid-friendly, two-player co-op browser game where players climb the floors of their school, kicking soccer balls at a goofy zombie horde, collecting coins, upgrading gear and beating rooftop bosses.",
+          "It runs on two iPads over the home Wi-Fi via a small Node WebSocket server — no firearms, just soccer balls."
+        ],
+        "highlights": [
+          "Local two-player co-op over home Wi-Fi",
+          "Climb floors, beat bosses, upgrade soccer gear",
+          "Kid-friendly — soccer balls instead of weapons",
+          "Runs on iPads via Add to Home Screen",
+          "Node.js WebSocket server with a canvas client"
+        ]
+      }
     },
     {
       "id": "aussie-ramenman-insta",
@@ -76,16 +121,27 @@
       "type": "automation",
       "description": "A daily Python script that gathers tagged ramen posts from Sydney and Melbourne Instagram accounts into a Notion digest for manual review.",
       "benefit": "Surfaces fresh, relevant posts to engage with each morning, with no against-ToS automation on the account.",
-      "link": null,
-      "linkLabel": null,
-      "source": "local",
-      "repo": null,
-      "private": false,
+      "link": "./project.html?id=aussie-ramenman-insta",
+      "linkLabel": "View details",
       "tech": ["Python", "Notion API", "SQLite"],
       "updatedAt": null,
       "featured": false,
       "hidden": false,
-      "order": 5
+      "order": 5,
+      "detail": {
+        "tagline": "A daily ramen-post digest delivered into Notion.",
+        "overview": [
+          "A Python automation that, once a day, scans the tagged feeds of around 21 Sydney and Melbourne ramen accounts and writes the fresh posts into a Notion database for manual review each morning.",
+          "It deliberately performs no likes, comments or follows — it only gathers and reports, keeping the account safe from automation bans."
+        ],
+        "highlights": [
+          "Scans ~21 Sydney/Melbourne ramen accounts daily",
+          "Writes fresh posts to a Notion database",
+          "Dedupes via local SQLite and auto-archives old entries",
+          "No likes, comments or follows — ToS-safe by design",
+          "Scheduled with launchd; Python + Notion API"
+        ]
+      }
     },
     {
       "id": "minecraft_kanji_quest",
@@ -93,16 +149,24 @@
       "type": "html-page",
       "description": "A daily kanji practice quiz styled after Minecraft.",
       "benefit": "Makes routine kanji drilling more engaging for kids through a familiar game aesthetic.",
-      "link": "https://github.com/shuheifuller/minecraft_kanji_quest",
-      "linkLabel": "Play",
-      "source": "github",
-      "repo": "https://github.com/shuheifuller/minecraft_kanji_quest",
-      "private": false,
+      "link": "./project.html?id=minecraft_kanji_quest",
+      "linkLabel": "View details",
       "tech": ["HTML"],
       "updatedAt": "2025-08-03T05:49:02Z",
       "featured": false,
       "hidden": false,
-      "order": 6
+      "order": 6,
+      "detail": {
+        "tagline": "A daily kanji quiz with a Minecraft look.",
+        "overview": [
+          "A browser-based daily kanji practice quiz styled after Minecraft, designed to make routine character drilling feel like a game for kids."
+        ],
+        "highlights": [
+          "Daily kanji practice quiz",
+          "Minecraft-inspired visual style",
+          "Quick, repeatable drills for kids"
+        ]
+      }
     }
   ]
 }
