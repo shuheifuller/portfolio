@@ -80,3 +80,4 @@ To stop it: `launchctl unload ~/Library/LaunchAgents/com.shuhei.portfolio.refres
 - GitHub owner is `shuheifuller` (set once at the top of `discover.mjs`); the local macOS user is `shuheiuto` — don't confuse them in URLs.
 - Tampermonkey/Greasemonkey `*.user.js` files are auto-detected as `userscript` once they exist under `~/dev`.
 - Private repos (e.g. `family-wealth-dashboard`) are excluded in the script, so their data never reaches the published JSON.
+- The black-cat feature image (`assets/img/black-cat.jpg`) is a free [Pexels](https://www.pexels.com/photo/black-cat-28119304/) photo (Pexels License — free for commercial use, no attribution required); the monochrome low-key look is applied in CSS. Swap the file to use your own cat's photo.
