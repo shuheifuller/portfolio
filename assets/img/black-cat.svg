@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 820" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Low-key monochrome portrait of a black cat">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="34%" r="62%">
+      <stop offset="0" stop-color="#262626"/>
+      <stop offset="0.45" stop-color="#121212"/>
+      <stop offset="1" stop-color="#050505"/>
+    </radialGradient>
+    <linearGradient id="cat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161616"/>
+      <stop offset="0.6" stop-color="#0b0b0b"/>
+      <stop offset="1" stop-color="#040404"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="50%" cy="42%" r="75%">
+      <stop offset="0.55" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.85"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+    <radialGradient id="eye" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#eaeaea"/>
+      <stop offset="0.5" stop-color="#9a9a9a"/>
+      <stop offset="1" stop-color="#2a2a2a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- backdrop -->
+  <rect width="1600" height="820" fill="#050505"/>
+  <rect width="1600" height="820" fill="url(#glow)"/>
+
+  <!-- soft floor shadow under the cat -->
+  <ellipse cx="800" cy="712" rx="240" ry="34" fill="#000000" opacity="0.55"/>
+
+  <g>
+    <!-- tail curling around the right side -->
+    <path d="M 928 690 C 1110 706, 1186 548, 1066 452 C 1024 418, 968 442, 996 498 C 1058 556, 1010 626, 880 648 Z" fill="url(#cat)"/>
+
+    <!-- body (seated bell) -->
+    <path d="M 648 706 C 596 604, 600 470, 706 416 C 744 398, 772 396, 800 396 C 828 396, 862 404, 902 432 C 992 498, 998 612, 956 706 Z" fill="url(#cat)"/>
+
+    <!-- front legs -->
+    <rect x="742" y="560" width="38" height="150" rx="19" fill="url(#cat)"/>
+    <rect x="822" y="560" width="38" height="150" rx="19" fill="url(#cat)"/>
+    <ellipse cx="761" cy="706" rx="26" ry="14" fill="url(#cat)"/>
+    <ellipse cx="841" cy="706" rx="26" ry="14" fill="url(#cat)"/>
+
+    <!-- neck/chest fill to merge head & body -->
+    <path d="M 736 430 C 748 360, 852 360, 864 430 C 880 470, 860 470, 800 472 C 740 470, 720 470, 736 430 Z" fill="url(#cat)"/>
+
+    <!-- head -->
+    <circle cx="800" cy="352" r="98" fill="url(#cat)"/>
+
+    <!-- ears -->
+    <path d="M 716 300 L 690 196 L 778 268 Z" fill="url(#cat)"/>
+    <path d="M 884 300 L 910 196 L 822 268 Z" fill="url(#cat)"/>
+
+    <!-- rim light along the lit (left) contour -->
+    <g fill="none" stroke="#cfcfcf" stroke-linecap="round">
+      <path d="M 690 200 L 714 296" stroke-width="3" opacity="0.30"/>
+      <path d="M 706 318 C 690 350, 700 392, 728 420" stroke-width="3" opacity="0.22"/>
+      <path d="M 700 452 C 636 520, 632 612, 666 690" stroke-width="3" opacity="0.16"/>
+      <path d="M 884 300 L 905 210" stroke-width="2.5" opacity="0.16"/>
+    </g>
+
+    <!-- whiskers (very faint) -->
+    <g stroke="#bdbdbd" stroke-width="1.2" opacity="0.18" fill="none">
+      <path d="M 770 392 C 700 392, 660 388, 612 380"/>
+      <path d="M 772 404 C 706 412, 664 418, 620 426"/>
+      <path d="M 830 392 C 900 392, 940 388, 988 380"/>
+      <path d="M 828 404 C 894 412, 936 418, 980 426"/>
+    </g>
+
+    <!-- eyes: low catch-light -->
+    <ellipse cx="766" cy="344" rx="17" ry="11" fill="url(#eye)" opacity="0.85"/>
+    <ellipse cx="834" cy="344" rx="17" ry="11" fill="url(#eye)" opacity="0.85"/>
+    <ellipse cx="766" cy="344" rx="4" ry="9" fill="#0a0a0a"/>
+    <ellipse cx="834" cy="344" rx="4" ry="9" fill="#0a0a0a"/>
+  </g>
+
+  <!-- vignette + film grain to read as a low-key photograph -->
+  <rect width="1600" height="820" fill="url(#vignette)"/>
+  <rect width="1600" height="820" filter="url(#grain)" opacity="0.05"/>
+</svg>
