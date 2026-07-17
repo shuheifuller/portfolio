@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-15T00:00:00Z",
+  "generatedAt": "2026-07-17T00:00:00Z",
   "owner": "shuheifuller",
   "access": "Shared privately with family and friends.",
   "items": [
@@ -11,7 +11,11 @@
       "benefit": "Lets the school preview a complete parent-portal experience before committing to a paid platform.",
       "link": "./project.html?id=matefc-mock-app",
       "linkLabel": "View details",
-      "tech": ["TypeScript", "React", "Vite"],
+      "tech": [
+        "TypeScript",
+        "React",
+        "Vite"
+      ],
       "updatedAt": "2026-06-14T14:29:00Z",
       "featured": true,
       "hidden": false,
@@ -30,7 +34,10 @@
           "Built with React, TypeScript and Vite"
         ],
         "images": [
-          { "src": "./assets/img/matefc-mock-app/cover.png", "caption": "Bilingual sign-in — choose the Parents & Students or Coach & Admin flow" }
+          {
+            "src": "./assets/img/matefc-mock-app/cover.png",
+            "caption": "Bilingual sign-in — choose the Parents & Students or Coach & Admin flow"
+          }
         ]
       }
     },
@@ -42,7 +49,10 @@
       "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device.",
       "link": "./project.html?id=english-vocab",
       "linkLabel": "View details",
-      "tech": ["HTML", "PWA"],
+      "tech": [
+        "HTML",
+        "PWA"
+      ],
       "updatedAt": "2026-06-14T07:30:22Z",
       "featured": true,
       "hidden": false,
@@ -61,7 +71,10 @@
           "Google sign-in"
         ],
         "images": [
-          { "src": "./assets/img/english-vocab/cover.png", "caption": "Sign-in screen for the vocabulary PWA" }
+          {
+            "src": "./assets/img/english-vocab/cover.png",
+            "caption": "Sign-in screen for the vocabulary PWA"
+          }
         ]
       }
     },
@@ -73,7 +86,10 @@
       "benefit": "Gives the family an install-free game that runs in any browser, on desktop or iPad.",
       "link": "./project.html?id=block-survival",
       "linkLabel": "View details",
-      "tech": ["HTML", "Three.js"],
+      "tech": [
+        "HTML",
+        "Three.js"
+      ],
       "updatedAt": "2026-06-14T12:59:12Z",
       "featured": true,
       "hidden": false,
@@ -92,7 +108,124 @@
           "Single-file Three.js, no build step"
         ],
         "images": [
-          { "src": "./assets/img/block-survival/cover.png", "caption": "Surviving a wave in the Minecraft-style arena — HUD, tokens and weapon ammo" }
+          {
+            "src": "./assets/img/block-survival/cover.png",
+            "caption": "Surviving a wave in the Minecraft-style arena — HUD, tokens and weapon ammo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "talkio",
+      "name": "Talkio",
+      "type": "ios-app",
+      "description": "A privacy-first iOS dictation app that turns speech into clean, ready-to-paste text entirely on-device, in five languages.",
+      "benefit": "Delivers fast, tidy dictation into any app — filler words removed, punctuation fixed — without sending a word to a server.",
+      "link": "./project.html?id=talkio",
+      "linkLabel": "View details",
+      "tech": [
+        "Swift 6",
+        "SwiftUI",
+        "SpeechAnalyzer"
+      ],
+      "updatedAt": null,
+      "featured": false,
+      "hidden": false,
+      "order": 4,
+      "detail": {
+        "tagline": "On-device speech-to-text for iPhone and iPad.",
+        "overview": [
+          "Talkio listens, transcribes and tidies your speech — filler words removed, punctuation fixed — entirely on-device, with no servers, accounts or stored transcripts.",
+          "Its custom keyboard brings dictation to any app: switch to the Talkio keyboard in a text field and speak, with the app relaying clean text into place. Built in Swift 6 and SwiftUI with zero dependencies, supporting English, Japanese, Hindi, Spanish and Brazilian Portuguese."
+        ],
+        "highlights": [
+          "100% on-device — nothing saved, nothing sent",
+          "Five languages: English, 日本語, हिन्दी, Español, Português (BR)",
+          "Keyboard extension dictates into any app",
+          "Two-tier cleanup: Apple Intelligence + deterministic rules",
+          "Swift 6 / SwiftUI, zero dependencies"
+        ],
+        "images": [
+          {
+            "src": "./assets/img/talkio/cover.png",
+            "caption": "Tap the mic and just talk — the home screen on iPhone"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wellbeing-navi",
+      "name": "Wellbeing Navi",
+      "type": "app",
+      "description": "A private, on-device robo-advisor in the WealthNavi style — risk profiling, portfolio construction, Monte-Carlo projections and rebalancing suggestions for the family.",
+      "benefit": "Brings robo-advisor intelligence to the family's investing while keeping every byte of financial data encrypted on your own devices.",
+      "link": "./project.html?id=wellbeing-navi",
+      "linkLabel": "View details",
+      "tech": [
+        "TypeScript",
+        "Vite",
+        "WebCrypto"
+      ],
+      "updatedAt": "2026-07-06T13:10:52Z",
+      "featured": false,
+      "hidden": false,
+      "order": 5,
+      "detail": {
+        "tagline": "A WealthNavi-style robo-advisor that never leaves your device.",
+        "overview": [
+          "Wellbeing Navi replicates the intelligence of a robo-advisor — risk profiling, mean-variance portfolio construction, Monte-Carlo projections, market-aware recommendations and rebalancing suggestions — as a private tool for the family.",
+          "It deliberately stays a decision-support tool (you place every trade yourself at your own broker), and all data lives in an AES-256-GCM encrypted vault on your own devices: a desktop app on the Mac, and phones over home Wi-Fi."
+        ],
+        "highlights": [
+          "Risk profiling and mean-variance portfolio construction",
+          "Monte-Carlo projections and recurring-investment planning",
+          "Rebalancing suggestions that track the market",
+          "Everything encrypted on-device — no server, no account",
+          "Desktop app plus phone access over home Wi-Fi"
+        ],
+        "images": [
+          {
+            "src": "./assets/img/wellbeing-navi/cover.png",
+            "caption": "Creating the encrypted vault — all data stays on the device"
+          }
+        ]
+      }
+    },
+    {
+      "id": "67-mystery-app",
+      "name": "67 Mystery",
+      "type": "app",
+      "description": "A Brookhaven-style scavenger-hunt game set in a full Three.js city — dozens of missions tracking down the hidden \"67\", with shops, vehicles, outfits and crime events.",
+      "benefit": "Gives the kids a Roblox-style world of their own — playable together on Mac, iPad or iPhone, straight from the browser.",
+      "link": "./project.html?id=67-mystery-app",
+      "linkLabel": "View details",
+      "tech": [
+        "Three.js",
+        "Vite",
+        "WebSocket"
+      ],
+      "updatedAt": "2026-07-08T02:21:48Z",
+      "featured": false,
+      "hidden": false,
+      "order": 6,
+      "detail": {
+        "tagline": "Find the 67 — a scavenger hunt across a whole city.",
+        "overview": [
+          "A mysterious \"67\" hides somewhere in a full Brookhaven-style metropolis — downtown, mall, stadium, farm, marina, funfair, two climbable mountains and an island offshore. Read the clues, track it down, and strike the legendary 67 pose.",
+          "Forty missions (and counting) mix classic hunts with citizen interviews and random crime events; coins earned catching thieves buy bikes, boats, jetpacks and outfits, each unlocking bonus events. Friends join the same city through multiplayer rooms, and progress auto-saves in the browser. Built as a Three.js prototype to port to Roblox Studio."
+        ],
+        "highlights": [
+          "A ~1200×1200-stud living city with townsfolk, traffic and wildlife",
+          "40 missions: hunts, citizen interviews, and thief chases",
+          "67 Shop: bicycle, motorboat, jetpack and outfits with bonus events",
+          "Multiplayer rooms — host or join a friend's city",
+          "Three.js prototype designed to port to Roblox Studio"
+        ],
+        "images": [
+          {
+            "src": "./assets/img/67-mystery-app/cover.png",
+            "caption": "The title screen — the whole city is hiding something"
+          }
         ]
       }
     },
@@ -104,11 +237,14 @@
       "benefit": "Gives two kids a shared, firearm-free co-op game across iPads on home Wi-Fi, with no app-store install.",
       "link": "./project.html?id=anzac-of-zombies",
       "linkLabel": "View details",
-      "tech": ["Node.js", "WebSocket"],
+      "tech": [
+        "Node.js",
+        "WebSocket"
+      ],
       "updatedAt": null,
       "featured": false,
       "hidden": false,
-      "order": 4,
+      "order": 7,
       "detail": {
         "tagline": "A two-player co-op game made for the kids.",
         "overview": [
@@ -123,7 +259,10 @@
           "Node.js WebSocket server with a canvas client"
         ],
         "images": [
-          { "src": "./assets/img/anzac-of-zombies/cover.png", "caption": "Character select — pick Ren or Haru, then play solo or co-op" }
+          {
+            "src": "./assets/img/anzac-of-zombies/cover.png",
+            "caption": "Character select — pick Ren or Haru, then play solo or co-op"
+          }
         ]
       }
     },
@@ -135,11 +274,15 @@
       "benefit": "Surfaces fresh, relevant posts to engage with each morning, with no against-ToS automation on the account.",
       "link": "./project.html?id=aussie-ramenman-insta",
       "linkLabel": "View details",
-      "tech": ["Python", "Notion API", "SQLite"],
+      "tech": [
+        "Python",
+        "Notion API",
+        "SQLite"
+      ],
       "updatedAt": null,
       "featured": false,
       "hidden": false,
-      "order": 5,
+      "order": 8,
       "detail": {
         "tagline": "A daily ramen-post digest delivered into Notion.",
         "overview": [
@@ -163,11 +306,13 @@
       "benefit": "Makes routine kanji drilling more engaging for kids through a familiar game aesthetic.",
       "link": "./project.html?id=minecraft_kanji_quest",
       "linkLabel": "View details",
-      "tech": ["HTML"],
+      "tech": [
+        "HTML"
+      ],
       "updatedAt": "2025-08-03T05:49:02Z",
       "featured": false,
       "hidden": false,
-      "order": 6,
+      "order": 9,
       "detail": {
         "tagline": "A daily kanji quiz with a Minecraft look.",
         "overview": [
@@ -179,7 +324,10 @@
           "Quick, repeatable drills for kids"
         ],
         "images": [
-          { "src": "./assets/img/minecraft_kanji_quest/cover.png", "caption": "Home screen — KANJIMINE QUEST in a Minecraft style" }
+          {
+            "src": "./assets/img/minecraft_kanji_quest/cover.png",
+            "caption": "Home screen — KANJIMINE QUEST in a Minecraft style"
+          }
         ]
       }
     }

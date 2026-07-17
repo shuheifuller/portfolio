@@ -20,6 +20,10 @@ import { homedir } from "node:os";
 // ---------------------------------------------------------------------------
 const GH_OWNER = "shuheifuller";                 // GitHub username (NOT the macOS user `shuheiuto`)
 const INCLUDE_PRIVATE = false;                   // never leak private repos onto a public page
+// Private repos the owner has explicitly chosen to SHOW on the portfolio.
+// Only name/description/detail appear — the published page never carries URLs
+// (links live in the encrypted vault), so listing here reveals existence only.
+const PRIVATE_ALLOWLIST = new Set(["67-mystery-app", "wellbeing-navi"]);
 const DEV_ROOT = join(homedir(), "dev");
 const SCAN_DIRS = ["Personal", "Family", "Project", "Work"];
 const SKIP_NAMES = new Set([
@@ -28,6 +32,7 @@ const SKIP_NAMES = new Set([
   "untitled folder",
   ".DS_Store",
 ]);
+const SKIP_REPOS = new Set(["portfolio"]); // the portfolio must not list itself
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORTFOLIO_DIR = dirname(__dirname);
@@ -102,6 +107,7 @@ function classifyLocal(dir) {
       if (content.includes("==UserScript==")) return "userscript";
     }
   }
+  if (entries.some((f) => f.endsWith(".xcodeproj"))) return "ios-app";
   if (deps.next || deps.react || deps.vite || deps.vue || deps.svelte) return "app";
   if (has("requirements.txt") || has("pyproject.toml") || entries.some((f) => f.endsWith(".py"))) return "automation";
   if (has("index.html")) return "html-page";
@@ -209,7 +215,7 @@ function build() {
   // 3a. Local folders (merged with GitHub when a remote matches)
   for (const l of locals) {
     const gh = l.repoName ? repos.get(l.repoName) : null;
-    if (gh && gh.isPrivate && !INCLUDE_PRIVATE) { usedRepos.add(l.repoName); continue; }
+    if (gh && gh.isPrivate && !INCLUDE_PRIVATE && !PRIVATE_ALLOWLIST.has(l.repoName)) { usedRepos.add(l.repoName); continue; }
     if (gh) usedRepos.add(l.repoName);
 
     const primaryLanguage = gh?.primaryLanguage?.name || null;
@@ -235,8 +241,8 @@ function build() {
 
   // 3b. GitHub-only repos (no local folder)
   for (const [name, r] of repos) {
-    if (usedRepos.has(name)) continue;
-    if (r.isPrivate && !INCLUDE_PRIVATE) continue;
+    if (usedRepos.has(name) || SKIP_REPOS.has(name)) continue;
+    if (r.isPrivate && !INCLUDE_PRIVATE && !PRIVATE_ALLOWLIST.has(name)) continue;
     const type = r.primaryLanguage?.name === "HTML" ? "html-page" : "project";
     const { link, linkLabel } = linkFor(type, r.homepageUrl, r.url);
     items.push({

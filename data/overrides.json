@@ -20,18 +20,31 @@
     "featured": true,
     "order": 3
   },
+  "talkio": {
+    "name": "Talkio",
+    "type": "ios-app",
+    "order": 4
+  },
+  "wellbeing-navi": {
+    "name": "Wellbeing Navi",
+    "order": 5
+  },
+  "67-mystery-app": {
+    "name": "67 Mystery",
+    "order": 6
+  },
   "anzac-of-zombies": {
     "name": "Anzac of Zombies",
-    "order": 4
+    "order": 7
   },
   "aussie-ramenman-insta": {
     "name": "Aussie Ramenman",
-    "order": 5
+    "order": 8
   },
   "minecraft_kanji_quest": {
     "name": "Minecraft Kanji Quest",
     "linkLabel": "Play",
-    "order": 6
+    "order": 9
   },
   "tomlog-interviewscript": {
     "name": "Tomlog Interview Script",

@@ -4,6 +4,7 @@
 const TYPE_LABEL = {
   app: "App",
   "html-page": "Web page",
+  "ios-app": "iOS app",
   automation: "Automation",
   userscript: "Userscript",
   project: "Project",

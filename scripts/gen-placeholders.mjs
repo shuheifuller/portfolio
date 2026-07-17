@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(__dirname);
 const data = JSON.parse(readFileSync(join(ROOT, "data", "projects.json"), "utf8"));
 
-const TYPE_LABEL = { app: "App", "html-page": "Web page", automation: "Automation", userscript: "Userscript", project: "Project" };
+const TYPE_LABEL = { app: "App", "html-page": "Web page", "ios-app": "iOS app", automation: "Automation", userscript: "Userscript", project: "Project" };
 
 function hash(s) { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
 function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
