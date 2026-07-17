@@ -25,6 +25,10 @@
     "type": "ios-app",
     "order": 4
   },
+  "murmuro": {
+    "hidden": true,
+    "_comment": "Superseded by Talkio — keep hidden even if discovery finds the folder"
+  },
   "wellbeing-navi": {
     "name": "Wellbeing Navi",
     "order": 5
