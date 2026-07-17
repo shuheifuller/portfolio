@@ -27,6 +27,28 @@ discover.mjs ──▶ projects.raw.json ──▶ /refresh-portfolio (Claude wr
 - **`project.html` + `assets/detail.js`** — detail page rendered from the same JSON by `?id=`, with an image gallery.
 - **`scripts/gen-placeholders.mjs`** — writes `assets/img/<id>/cover.svg` for any project missing a real screenshot (never overwrites one you've added).
 
+## Owner-only links (the link vault)
+
+Direct links to each app exist on the site but are **encrypted** — visitors can't see or
+recover them; you unlock them once per device.
+
+- `data/links.private.json` — the plaintext links (**gitignored**, never published).
+- `scripts/lock-links.mjs` — encrypts it: `node scripts/lock-links.mjs "<passphrase>"`
+  → writes `data/links.enc.json` (AES-256-GCM, safe to publish/commit).
+- `assets/vault.js` — browser-side decrypt (PBKDF2 + WebCrypto).
+
+**To unlock on one of your devices:** open any project detail page → click the small
+**"owner unlock"** link under *Access* → enter the passphrase. The device stays unlocked
+(localStorage) until you click **"lock this device"**. When unlocked, detail pages show
+"Owner links" (open app / source) and the Work list gains small ↗ direct-open arrows.
+
+**To change links or passphrase:** edit `data/links.private.json`, re-run
+`node scripts/lock-links.mjs "<new-passphrase>"`, commit `data/links.enc.json`, push.
+
+Honest scope: the encryption genuinely protects the URLs in the published site, but the
+apps themselves live at guessable public URLs (`shuheifuller.github.io/<repo>/`) and the
+repos are public — this hides the links, it does not authenticate the apps.
+
 ## Adding real screenshots
 
 Each project's images live in `assets/img/<id>/`. To replace the generated placeholder:

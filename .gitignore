@@ -3,3 +3,5 @@ automation/*.log
 .claude/settings.local.json
 # Intermediate discovery output — contains repo/homepage URLs we don't publish.
 data/projects.raw.json
+# Owner-only link vault source — never publish the plaintext
+data/links.private.json

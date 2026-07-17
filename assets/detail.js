@@ -97,6 +97,9 @@ async function load() {
     }
     meta.appendChild(el("h3", null, "Access"));
     meta.appendChild(el("p", "meta-note", (data.access || "Shared privately with family and friends.") + " Reach out if you'd like a look."));
+    const ownerArea = el("div", "owner-area");
+    meta.appendChild(ownerArea);
+    renderOwnerArea(ownerArea, p.id);
     grid.appendChild(meta);
 
     root.appendChild(grid);
@@ -111,6 +114,48 @@ function backLink() {
   const a = el("a", "back", "← All work");
   a.href = "./index.html#work";
   return a;
+}
+
+// Owner-only direct links, decrypted client-side (see assets/vault.js).
+async function renderOwnerArea(area, id) {
+  area.innerHTML = "";
+  const links = await window.Vault.load();
+  if (!links) {
+    const u = el("a", "owner-unlock", "owner unlock");
+    u.href = "#";
+    u.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (await window.Vault.unlock()) renderOwnerArea(area, id);
+    });
+    area.appendChild(u);
+    return;
+  }
+  const mine = links[id] || [];
+  if (mine.length) {
+    area.appendChild(el("h3", null, "Owner links"));
+    const list = el("div", "owner-links");
+    for (const l of mine) {
+      if (l.url) {
+        const a = el("a", "owner-link");
+        a.href = l.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.innerHTML = `${l.label} <span class="arrow">↗</span>`;
+        list.appendChild(a);
+      } else {
+        list.appendChild(el("p", "meta-note", l.label));
+      }
+    }
+    area.appendChild(list);
+  }
+  const lockBtn = el("a", "owner-unlock", "lock this device");
+  lockBtn.href = "#";
+  lockBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.Vault.lock();
+    renderOwnerArea(area, id);
+  });
+  area.appendChild(lockBtn);
 }
 
 // Nav border on scroll.

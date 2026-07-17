@@ -36,10 +36,13 @@ function renderItem(p) {
   item.appendChild(body);
 
   // Every row links to its own detail page on this site — no outbound app links.
+  const actions = el("div", "work-actions");
   const a = el("a", "work-link");
   a.href = p.link || `./project.html?id=${encodeURIComponent(p.id)}`;
   a.innerHTML = `${p.linkLabel || "View details"} <span class="arrow">→</span>`;
-  item.appendChild(a);
+  actions.appendChild(a);
+  item.dataset.id = p.id;
+  item.appendChild(actions);
   return item;
 }
 
@@ -67,9 +70,28 @@ async function load() {
     }
     for (const p of items) list.appendChild(renderItem(p));
     if (count) count.textContent = `${items.length} project${items.length === 1 ? "" : "s"}`;
+    decorateOwnerLinks(list);
   } catch (err) {
     list.innerHTML = "";
     list.appendChild(el("p", "error", `Could not load projects (${err.message}). Serve over http:// — run "python3 -m http.server" in this folder.`));
+  }
+}
+
+// If this device is owner-unlocked (assets/vault.js), add a direct-open arrow
+// next to each row's "View details" button. Visitors see nothing extra.
+async function decorateOwnerLinks(list) {
+  const links = await window.Vault.load();
+  if (!links) return;
+  for (const item of list.querySelectorAll(".work-item")) {
+    const first = (links[item.dataset.id] || []).find((l) => l.url);
+    if (!first) continue;
+    const a = el("a", "owner-ext");
+    a.href = first.url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.title = first.label;
+    a.textContent = "↗";
+    item.querySelector(".work-actions").appendChild(a);
   }
 }
 
