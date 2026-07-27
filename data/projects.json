@@ -18,7 +18,7 @@
       ],
       "updatedAt": "2026-06-14T14:29:00Z",
       "featured": true,
-      "hidden": false,
+      "hidden": true,
       "order": 1,
       "detail": {
         "tagline": "A bilingual mock of a soccer-school parent & coach portal.",
@@ -1091,7 +1091,7 @@
       ],
       "updatedAt": null,
       "featured": false,
-      "hidden": false,
+      "hidden": true,
       "order": 8,
       "detail": {
         "tagline": "A daily ramen-post digest delivered into Notion.",

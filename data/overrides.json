@@ -3,6 +3,7 @@
 
   "matefc-mock-app": {
     "name": "MateFC",
+    "hidden": true,
     "featured": true,
     "order": 1
   },
@@ -43,6 +44,7 @@
   },
   "aussie-ramenman-insta": {
     "name": "Aussie Ramenman",
+    "hidden": true,
     "order": 8
   },
   "minecraft_kanji_quest": {
