@@ -1,14 +1,7 @@
 // Render a single project's detail page from data/projects.json, keyed by ?id=.
 // No outbound links to the app itself — this page describes the project only.
 
-const TYPE_LABEL = {
-  app: "App",
-  "html-page": "Web page",
-  "ios-app": "iOS app",
-  automation: "Automation",
-  userscript: "Userscript",
-  project: "Project",
-};
+const typeLabel = (t) => window.I18N.t("type." + t);
 
 function el(tag, cls, text) {
   const n = document.createElement(tag);
@@ -32,11 +25,12 @@ async function load() {
     const res = await fetch("./data/projects.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const p = (data.items || []).find((x) => x.id === id);
+    const raw = (data.items || []).find((x) => x.id === id);
+    const p = raw ? window.I18N.loc(raw) : null;
 
     root.innerHTML = "";
     if (!p) {
-      root.appendChild(el("p", "error", "Project not found."));
+      root.appendChild(el("p", "error", window.I18N.t("detail.notFound")));
       root.appendChild(backLink());
       return;
     }
@@ -49,7 +43,7 @@ async function load() {
     const head = el("header", "detail-head");
     const tags = el("div", "work-head");
     tags.appendChild(el("h1", "detail-title", p.name));
-    tags.appendChild(el("span", "tag", TYPE_LABEL[p.type] || p.type));
+    tags.appendChild(el("span", "tag", typeLabel(p.type)));
     head.appendChild(tags);
     if (p.detail && p.detail.tagline) head.appendChild(el("p", "detail-tagline", p.detail.tagline));
     root.appendChild(head);
@@ -77,12 +71,12 @@ async function load() {
     for (const para of [].concat(paras)) overview.appendChild(el("p", null, para));
     if (p.benefit) {
       const b = el("p", "detail-benefit");
-      b.appendChild(el("strong", null, "Why it's useful — "));
+      b.appendChild(el("strong", null, window.I18N.t("detail.why")));
       b.appendChild(document.createTextNode(p.benefit));
       overview.appendChild(b);
     }
     if (p.detail && Array.isArray(p.detail.highlights) && p.detail.highlights.length) {
-      overview.appendChild(el("h2", "detail-sub", "Highlights"));
+      overview.appendChild(el("h2", "detail-sub", window.I18N.t("detail.highlights")));
       const ul = el("ul", "highlights");
       for (const h of p.detail.highlights) ul.appendChild(el("li", null, h));
       overview.appendChild(ul);
@@ -91,16 +85,16 @@ async function load() {
 
     const meta = el("aside", "detail-meta");
     if (Array.isArray(p.tech) && p.tech.length) {
-      meta.appendChild(el("h3", null, "Built with"));
+      meta.appendChild(el("h3", null, window.I18N.t("detail.builtWith")));
       const tl = el("div", "meta-tech");
       for (const t of p.tech) tl.appendChild(el("span", "chip", t));
       meta.appendChild(tl);
     }
-    meta.appendChild(el("h3", null, "Access"));
-    meta.appendChild(el("p", "meta-note", (data.access || "Shared privately with family and friends.") + " Reach out if you'd like a look."));
+    meta.appendChild(el("h3", null, window.I18N.t("detail.access")));
+    meta.appendChild(el("p", "meta-note", window.I18N.t("detail.accessNote")));
     const ownerArea = el("div", "owner-area");
     meta.appendChild(ownerArea);
-    renderOwnerArea(ownerArea, p.id);
+    renderOwnerArea(ownerArea, raw.id);
     grid.appendChild(meta);
 
     root.appendChild(grid);
@@ -113,7 +107,7 @@ async function load() {
 }
 
 function backLink() {
-  const a = el("a", "back", "← All work");
+  const a = el("a", "back", window.I18N.t("detail.back"));
   a.href = "./index.html#work";
   return a;
 }
@@ -131,7 +125,7 @@ function archBox(node) {
 
 function renderArchitecture(arch) {
   const sec = el("section", "detail-arch");
-  sec.appendChild(el("h2", "detail-sub", "Architecture"));
+  sec.appendChild(el("h2", "detail-sub", window.I18N.t("detail.architecture")));
   if (arch.summary) {
     for (const para of [].concat(arch.summary)) sec.appendChild(el("p", "arch-summary", para));
   }
@@ -168,7 +162,7 @@ async function renderOwnerArea(area, id) {
   area.innerHTML = "";
   const links = await window.Vault.load();
   if (!links) {
-    const u = el("a", "owner-unlock", "owner unlock");
+    const u = el("a", "owner-unlock", window.I18N.t("detail.unlock"));
     u.href = "#";
     u.addEventListener("click", async (e) => {
       e.preventDefault();
@@ -179,7 +173,7 @@ async function renderOwnerArea(area, id) {
   }
   const mine = links[id] || [];
   if (mine.length) {
-    area.appendChild(el("h3", null, "Owner links"));
+    area.appendChild(el("h3", null, window.I18N.t("detail.ownerLinks")));
     const list = el("div", "owner-links");
     for (const l of mine) {
       if (l.url) {
@@ -195,7 +189,7 @@ async function renderOwnerArea(area, id) {
     }
     area.appendChild(list);
   }
-  const lockBtn = el("a", "owner-unlock", "lock this device");
+  const lockBtn = el("a", "owner-unlock", window.I18N.t("detail.lock"));
   lockBtn.href = "#";
   lockBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -204,6 +198,11 @@ async function renderOwnerArea(area, id) {
   });
   area.appendChild(lockBtn);
 }
+
+// Re-render when the language changes.
+window.I18N.onChange(() => load());
+document.getElementById("lang-toggle")?.addEventListener("click", () => window.I18N.toggle());
+window.I18N.applyStatic();
 
 // Nav border on scroll.
 const nav = document.querySelector(".nav");

@@ -44,6 +44,22 @@ Stages render top-to-bottom with arrows; `parallel` puts boxes side by side, and
 labels the connector into that stage.
 - **`scripts/gen-placeholders.mjs`** — writes `assets/img/<id>/cover.svg` for any project missing a real screenshot (never overwrites one you've added).
 
+## Bilingual (English / 日本語)
+
+A toggle in the nav switches the whole site, and the choice is remembered per device
+(it also follows the browser's language on a first visit).
+
+- **UI chrome** — `assets/i18n.js`, one dictionary with an `en` and a `ja` block.
+  Static markup is tagged `data-i18n="key"` and swapped in place.
+- **Project copy** — each item in `data/projects.json` carries an `i18n.ja` block that
+  mirrors the English fields (`description`, `benefit`, and inside `detail`: `tagline`,
+  `overview`, `highlights`, `images` captions and the whole `architecture`). Anything not
+  translated falls back to English automatically, so a half-translated project still renders.
+
+When adding a project, write the Japanese block too — or leave it out and it stays English
+until you do. Asset URLs carry a `?v=` version; bump it in `index.html` / `project.html`
+when you change CSS or JS so returning visitors don't get a cached copy.
+
 ## Owner-only links (the link vault)
 
 Direct links to each app exist on the site but are **encrypted** — visitors can't see or

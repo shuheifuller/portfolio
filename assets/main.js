@@ -1,14 +1,7 @@
 // Fetch the generated project data and render the Work list.
 // Zero dependencies. The data is produced by scripts/discover.mjs + /refresh-portfolio.
 
-const TYPE_LABEL = {
-  app: "App",
-  "html-page": "Web page",
-  "ios-app": "iOS app",
-  automation: "Automation",
-  userscript: "Userscript",
-  project: "Project",
-};
+const typeLabel = (t) => window.I18N.t("type." + t);
 
 function el(tag, cls, text) {
   const n = document.createElement(tag);
@@ -17,13 +10,14 @@ function el(tag, cls, text) {
   return n;
 }
 
-function renderItem(p) {
+function renderItem(raw) {
+  const p = window.I18N.loc(raw);
   const item = el("article", "work-item");
 
   const body = el("div", "body");
   const head = el("div", "work-head");
   head.appendChild(el("span", "work-name", p.name));
-  head.appendChild(el("span", "tag", TYPE_LABEL[p.type] || p.type));
+  head.appendChild(el("span", "tag", typeLabel(p.type)));
   body.appendChild(head);
 
   if (p.description) body.appendChild(el("p", "work-desc", p.description));
@@ -40,9 +34,9 @@ function renderItem(p) {
   const actions = el("div", "work-actions");
   const a = el("a", "work-link");
   a.href = p.link || `./project.html?id=${encodeURIComponent(p.id)}`;
-  a.innerHTML = `${p.linkLabel || "View details"} <span class="arrow">→</span>`;
+  a.innerHTML = `${window.I18N.t("work.viewDetails")} <span class="arrow">→</span>`;
   actions.appendChild(a);
-  item.dataset.id = p.id;
+  item.dataset.id = raw.id;
   item.appendChild(actions);
   return item;
 }
@@ -66,11 +60,11 @@ async function load() {
 
     list.innerHTML = "";
     if (!items.length) {
-      list.appendChild(el("p", "loading", "No projects yet."));
+      list.appendChild(el("p", "loading", window.I18N.t("work.empty")));
       return;
     }
     for (const p of items) list.appendChild(renderItem(p));
-    if (count) count.textContent = `${items.length} project${items.length === 1 ? "" : "s"}`;
+    if (count) count.textContent = window.I18N.t(items.length === 1 ? "work.count_one" : "work.count", { n: items.length });
     decorateOwnerLinks(list);
   } catch (err) {
     list.innerHTML = "";
@@ -95,6 +89,11 @@ async function decorateOwnerLinks(list) {
     item.querySelector(".work-actions").appendChild(a);
   }
 }
+
+// Re-render the list when the language changes.
+window.I18N.onChange(() => load());
+document.getElementById("lang-toggle")?.addEventListener("click", () => window.I18N.toggle());
+window.I18N.applyStatic();
 
 // Nav border on scroll.
 const nav = document.querySelector(".nav");

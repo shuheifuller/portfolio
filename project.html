@@ -7,31 +7,34 @@
   <meta name="description" content="Project detail — Shuhei Uto's portfolio." />
   <link rel="preconnect" href="https://rsms.me/" />
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="./assets/styles.css?v=2" />
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="wordmark" href="./index.html">Shuhei&nbsp;Uto</a>
       <nav class="nav-links">
-        <a href="./index.html#work">Work</a>
-        <a href="./index.html#services">Services</a>
-        <a href="./index.html#contact">Contact</a>
+        <a href="./index.html#work" data-i18n="nav.work">Work</a>
+        <a href="./index.html#services" data-i18n="nav.services">Services</a>
+        <a href="./index.html#contact" data-i18n="nav.contact">Contact</a>
+        <button type="button" class="lang-toggle" id="lang-toggle"
+                data-i18n="nav.langToggle" data-i18n-title="nav.langToggleTitle">日本語</button>
       </nav>
     </div>
   </header>
 
   <main id="detail" class="wrap detail">
-    <p class="loading">Loading…</p>
+    <p class="loading" data-i18n="work.loading">Loading…</p>
   </main>
 
   <footer class="footer wrap">
     <span>© <span id="year">2026</span> Shuhei Uto</span>
-    <span>Shared privately with family &amp; friends</span>
+    <span data-i18n="footer.private">Shared privately with family &amp; friends</span>
   </footer>
 
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="./assets/vault.js"></script>
-  <script src="./assets/detail.js"></script>
+  <script src="./assets/i18n.js?v=2"></script>
+  <script src="./assets/vault.js?v=2"></script>
+  <script src="./assets/detail.js?v=2"></script>
 </body>
 </html>
