@@ -23,6 +23,9 @@ You are refreshing the auto-populated portfolio in this directory. Work precisel
        - `description`: one factual sentence describing what it is.
        - `benefit`: one sentence — who it helps and how (the outcome).
        - `detail`: an object with `tagline` (one short line), `overview` (array of 1–3 sentences/paragraphs), and `highlights` (array of 3–6 short bullet strings). Leave `detail.images` unset — the cover is generated separately.
+       - `detail.architecture`: **read the project's actual source** (README, package.json, entry points, server/ and src/ dirs) before writing this — never guess. Shape:
+         `{ "summary": "1–2 sentences on how it's put together", "flow": [ {"title":"Stage", "note":"what it does", "tech":"Library"}, {"via":"WebSocket", "parallel":[{...},{...}]} ], "notes": ["constraint or decision", ...] }`
+         Each `flow` entry is one stage, rendered top-to-bottom with arrows; use `parallel` for side-by-side pieces (e.g. client and server) and `via` to label the connector into that stage. Keep 4–7 stages, titles under ~40 chars.
        - Voice: understated, professional, agency-style (match the existing entries). No hype, no exclamation marks. British/AU spelling is fine. Summarise Japanese READMEs into clean English.
    - Apply any other `overrides.json` fields last (name, type, linkLabel, featured, hidden, order, or a custom `detail`) — overrides always win.
    - Drop the `readmeExcerpt`, `topics`, `repo`, `source`, `private`, `homepageUrl` fields from the final object. Ensure each item has: `id, name, type, description, benefit, link, linkLabel, tech, updatedAt, featured, hidden, order, detail`.

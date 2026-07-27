@@ -272,6 +272,35 @@ section { padding: clamp(56px, 9vw, 110px) 0; }
 .highlights li { padding: 10px 0 10px 22px; border-bottom: 1px solid var(--line); position: relative; }
 .highlights li::before { content: "→"; position: absolute; left: 0; color: var(--faint); }
 
+/* ── Architecture diagram ──────────────────────────────────────────── */
+.detail-arch { margin-top: 56px; border-top: 1px solid var(--line); padding-top: 32px; }
+.detail-arch .detail-sub { margin-top: 0; }
+.arch-summary { color: var(--muted); max-width: 70ch; margin: 0 0 12px; }
+.arch-flow { display: flex; flex-direction: column; align-items: center; margin: 28px 0 8px; }
+.arch-stage { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; width: 100%; }
+.arch-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--hover);
+  padding: 13px 20px;
+  min-width: 230px;
+  max-width: 340px;
+  text-align: center;
+}
+.arch-stage.parallel .arch-box { flex: 0 1 300px; }
+.arch-box-title { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+.arch-box-note { color: var(--muted); font-size: 13px; line-height: 1.45; }
+.arch-box-tech { color: var(--faint); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+.arch-link { display: flex; align-items: center; gap: 8px; height: 34px; color: var(--faint); }
+.arch-arrow { font-size: 15px; line-height: 1; }
+.arch-via { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.arch-notes { margin: 22px 0 0; padding: 0; list-style: none; max-width: 70ch; }
+.arch-notes li { position: relative; padding: 7px 0 7px 20px; color: var(--muted); font-size: 14px; }
+.arch-notes li::before { content: "·"; position: absolute; left: 6px; color: var(--faint); }
+
 .detail-meta h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
 /* owner-only vault UI */
 .owner-area { margin-top: 20px; }
@@ -306,6 +335,8 @@ section { padding: clamp(56px, 9vw, 110px) 0; }
 
 @media (max-width: 680px) {
   .detail-grid { grid-template-columns: 1fr; }
+  .arch-stage { flex-direction: column; align-items: stretch; }
+  .arch-box { min-width: 0; max-width: none; }
 }
 
 /* ── Responsive ────────────────────────────────────────────────────── */

@@ -24,7 +24,24 @@ discover.mjs ──▶ projects.raw.json ──▶ /refresh-portfolio (Claude wr
 - **`/refresh-portfolio`** (Claude Code command) — runs discovery, then writes the one-sentence `description` + `benefit` for any *new* project, applies `overrides.json`, and writes `data/projects.json`. Already-approved prose is never rewritten.
 - **`data/overrides.json`** — your curation layer, keyed by project `id`. Anything you set (name, type, link, `featured`, `hidden`, `order`, custom prose) wins and survives every refresh.
 - **`index.html` + `assets/`** — static Work list that `fetch`es `data/projects.json`. No framework, no build.
-- **`project.html` + `assets/detail.js`** — detail page rendered from the same JSON by `?id=`, with an image gallery.
+- **`project.html` + `assets/detail.js`** — detail page rendered from the same JSON by `?id=`, with an image gallery and an architecture diagram.
+
+Each project's `detail.architecture` in `data/projects.json` drives a rendered diagram
+(no image files, no diagram library — plain DOM + CSS, so it themes and reflows on mobile):
+
+```json
+"architecture": {
+  "summary": "How the pieces fit together, in a sentence or two.",
+  "flow": [
+    { "title": "Stage name", "note": "what happens here", "tech": "Library" },
+    { "via": "WebSocket", "parallel": [ { "title": "Client" }, { "title": "Server" } ] }
+  ],
+  "notes": ["A constraint or design decision worth calling out"]
+}
+```
+
+Stages render top-to-bottom with arrows; `parallel` puts boxes side by side, and `via`
+labels the connector into that stage.
 - **`scripts/gen-placeholders.mjs`** — writes `assets/img/<id>/cover.svg` for any project missing a real screenshot (never overwrites one you've added).
 
 ## Owner-only links (the link vault)

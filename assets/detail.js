@@ -104,6 +104,7 @@ async function load() {
     grid.appendChild(meta);
 
     root.appendChild(grid);
+    if (p.detail && p.detail.architecture) root.appendChild(renderArchitecture(p.detail.architecture));
     root.appendChild(backLink());
   } catch (err) {
     root.innerHTML = "";
@@ -115,6 +116,51 @@ function backLink() {
   const a = el("a", "back", "← All work");
   a.href = "./index.html#work";
   return a;
+}
+
+// Architecture diagram: a vertical flow of stages, each either one box or a
+// row of parallel boxes, with optionally-labelled connectors between them.
+// Pure DOM + CSS so it stays monochrome, themeable and readable on mobile.
+function archBox(node) {
+  const box = el("div", "arch-box");
+  box.appendChild(el("span", "arch-box-title", node.title));
+  if (node.note) box.appendChild(el("span", "arch-box-note", node.note));
+  if (node.tech) box.appendChild(el("span", "arch-box-tech", node.tech));
+  return box;
+}
+
+function renderArchitecture(arch) {
+  const sec = el("section", "detail-arch");
+  sec.appendChild(el("h2", "detail-sub", "Architecture"));
+  if (arch.summary) {
+    for (const para of [].concat(arch.summary)) sec.appendChild(el("p", "arch-summary", para));
+  }
+
+  const flow = el("div", "arch-flow");
+  (arch.flow || []).forEach((step, i) => {
+    if (i > 0) {
+      const link = el("div", "arch-link");
+      link.appendChild(el("span", "arch-arrow", "↓"));
+      if (step.via) link.appendChild(el("span", "arch-via", step.via));
+      flow.appendChild(link);
+    }
+    const stage = el("div", "arch-stage");
+    if (Array.isArray(step.parallel)) {
+      stage.classList.add("parallel");
+      for (const n of step.parallel) stage.appendChild(archBox(n));
+    } else {
+      stage.appendChild(archBox(step));
+    }
+    flow.appendChild(stage);
+  });
+  sec.appendChild(flow);
+
+  if (Array.isArray(arch.notes) && arch.notes.length) {
+    const ul = el("ul", "arch-notes");
+    for (const n of arch.notes) ul.appendChild(el("li", null, n));
+    sec.appendChild(ul);
+  }
+  return sec;
 }
 
 // Owner-only direct links, decrypted client-side (see assets/vault.js).

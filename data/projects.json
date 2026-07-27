@@ -38,14 +38,57 @@
             "src": "./assets/img/matefc-mock-app/cover.png",
             "caption": "Bilingual sign-in — choose the Parents & Students or Coach & Admin flow"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "A client-only React app with no backend and no database. Seed data loads into React context, and every action mutates in-memory state — so the whole product journey can be demoed, then reset with a refresh.",
+          "flow": [
+            {
+              "title": "Static seed data",
+              "note": "Families, students, sessions and invoices as TypeScript modules",
+              "tech": "src/data"
+            },
+            {
+              "title": "DataProvider context",
+              "note": "Seed loaded into React state; catalogs passed through untouched",
+              "via": "load"
+            },
+            {
+              "title": "Screens read through hooks",
+              "note": "Derived views come from selectors and the membership rules module"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Actions mutate state",
+                  "note": "Enrol, convert a trial, mark attendance, post news"
+                },
+                {
+                  "title": "Bilingual dictionary",
+                  "note": "Hand-rolled EN / 日本語 lookup, switchable anywhere"
+                }
+              ],
+              "via": "interaction"
+            },
+            {
+              "title": "Role-gated routing",
+              "note": "Parent and coach layouts render inside a phone frame",
+              "tech": "HashRouter"
+            }
+          ],
+          "notes": [
+            "No backend and no storage — a refresh resets everything to seed, deliberately",
+            "One membership module is the single source of truth for tiers, pricing and badge colours",
+            "Hash routing was chosen so static hosts need no rewrite rules",
+            "The same build is wrapped with Capacitor to run as an iOS app"
+          ]
+        }
       }
     },
     {
       "id": "english-vocab",
       "name": "English Vocabulary",
       "type": "app",
-      "description": "An offline-capable vocabulary PWA with flashcards, quizzes, and a themed wiki of 412 words collected since 2020.",
+      "description": "An offline-capable vocabulary PWA with flashcards, quizzes, and a themed wiki of 425 words collected since 2020.",
       "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device.",
       "link": "./project.html?id=english-vocab",
       "linkLabel": "View details",
@@ -60,22 +103,68 @@
       "detail": {
         "tagline": "A vocabulary PWA built from years of personal notes.",
         "overview": [
-          "An offline-capable progressive web app that turns 412 words collected since 2020 into a structured study tool.",
-          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and signs in with Google so progress follows you across devices."
+          "An offline-capable progressive web app that turns 425 words collected since 2020 into a structured study tool.",
+          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and the whole app is regenerated from a single JSON file by a Python build step."
         ],
         "highlights": [
-          "412 words spanning 2020–2026",
+          "425 words spanning 2020–2026",
           "Flashcards, quizzes and progress statistics",
           "Themed wiki: business, idioms, Aussie slang, medical, legal, social",
           "Installable PWA — works offline on phone or desktop",
-          "Google sign-in"
+          "Generated from one JSON file — the repo is the database"
         ],
         "images": [
           {
             "src": "./assets/img/english-vocab/cover.png",
-            "caption": "Sign-in screen for the vocabulary PWA"
+            "caption": "The word list — 425 entries, filterable by year, part of speech and mastery"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "The repository is the database. Python scripts fold new words into a single JSON file, then regenerate one self-contained HTML app that is published to GitHub Pages.",
+          "flow": [
+            {
+              "title": "A word is queued",
+              "note": "Added to the queue file, or typed into the app on the phone"
+            },
+            {
+              "title": "Lookup and dedupe",
+              "note": "Duplicate check, then definition and translation lookup",
+              "tech": "Free Dictionary · Urban Dictionary · Wikipedia"
+            },
+            {
+              "title": "vocab_data.json",
+              "note": "The canonical store — 425 entries, versioned in git",
+              "via": "append"
+            },
+            {
+              "title": "Generator emits the app",
+              "note": "Data is inlined and the whole HTML file is rewritten",
+              "via": "build"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "The PWA",
+                  "note": "Flashcards, quiz and stats; installable and offline-capable"
+                },
+                {
+                  "title": "Themed wiki",
+                  "note": "Markdown notes by theme — business, idioms, Aussie slang, medical"
+                }
+              ]
+            },
+            {
+              "title": "Published to GitHub Pages",
+              "note": "Service-worker cache version bumped so devices pick up the change"
+            }
+          ],
+          "notes": [
+            "The HTML app is generated — it is never edited by hand",
+            "Raw imports are immutable and the activity log is append-only",
+            "Study progress and words added on the phone live in browser storage",
+            "A GitHub Action can run the same lookup → generate → commit flow unattended"
+          ]
+        }
       }
     },
     {
@@ -112,14 +201,54 @@
             "src": "./assets/img/block-survival/cover.png",
             "caption": "Surviving a wave in the Minecraft-style arena — HUD, tokens and weapon ammo"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "One HTML file holds the markup, the styles and the entire game. Three.js arrives as an ES module from a CDN at runtime, so there is no build step, no bundler and no server.",
+          "flow": [
+            {
+              "title": "Browser loads index.html",
+              "note": "An import map resolves Three.js from a CDN",
+              "tech": "No build step"
+            },
+            {
+              "title": "Procedural setup",
+              "note": "Textures drawn in code; world, mobs and five weapons declared as plain data"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Input",
+                  "note": "Arrow keys and mouse, plus on-screen sticks and buttons on iPad"
+                },
+                {
+                  "title": "Game loop",
+                  "note": "Wave spawning, mob behaviour and collisions on each frame"
+                }
+              ],
+              "via": "play"
+            },
+            {
+              "title": "Raycast hit detection",
+              "note": "Shots are cast against mob meshes; the tracers are cosmetic"
+            },
+            {
+              "title": "WebGL render + DOM overlays",
+              "note": "Three.js draws the world; HUD and shop sit above it as plain DOM"
+            }
+          ],
+          "notes": [
+            "Nothing persists — guns, tokens and upgrades reset each session, by design",
+            "Must be served over http(s) so the import map and CDN module resolve",
+            "No asset files at all: textures are generated in code and audio is synthesised"
+          ]
+        }
       }
     },
     {
       "id": "talkio",
       "name": "Talkio",
       "type": "ios-app",
-      "description": "A privacy-first iOS dictation app that turns speech into clean, ready-to-paste text entirely on-device, in five languages.",
+      "description": "A privacy-first iOS dictation app that turns speech into clean, ready-to-paste text entirely on-device, in eight languages.",
       "benefit": "Delivers fast, tidy dictation into any app — filler words removed, punctuation fixed — without sending a word to a server.",
       "link": "./project.html?id=talkio",
       "linkLabel": "View details",
@@ -136,11 +265,11 @@
         "tagline": "On-device speech-to-text for iPhone and iPad.",
         "overview": [
           "Talkio listens, transcribes and tidies your speech — filler words removed, punctuation fixed — entirely on-device, with no servers, accounts or stored transcripts.",
-          "Its custom keyboard brings dictation to any app: switch to the Talkio keyboard in a text field and speak, with the app relaying clean text into place. Built in Swift 6 and SwiftUI with zero dependencies, supporting English, Japanese, Hindi, Spanish and Brazilian Portuguese."
+          "Its custom keyboard brings dictation to any app: switch to the Talkio keyboard in a text field and speak, with the app relaying clean text into place. Built in Swift 6 and SwiftUI with zero dependencies, across eight languages."
         ],
         "highlights": [
           "100% on-device — nothing saved, nothing sent",
-          "Five languages: English, 日本語, हिन्दी, Español, Português (BR)",
+          "Eight languages: English, 日本語, 中文, हिन्दी, Español, Português, ไทย, Tiếng Việt",
           "Keyboard extension dictates into any app",
           "Two-tier cleanup: Apple Intelligence + deterministic rules",
           "Swift 6 / SwiftUI, zero dependencies"
@@ -150,7 +279,58 @@
             "src": "./assets/img/talkio/cover.png",
             "caption": "Tap the mic and just talk — the home screen on iPhone"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "Two targets — the app and a keyboard extension — share a small messaging module. iOS forbids microphone access inside a keyboard, so the keyboard remote-controls the app instead, and audio never leaves the device.",
+          "flow": [
+            {
+              "title": "Microphone capture",
+              "note": "An audio tap feeds the recogniser; no audio file is ever written",
+              "tech": "AVAudioEngine"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "SpeechTranscriber",
+                  "note": "English, 日本語, 中文, Español, Português"
+                },
+                {
+                  "title": "DictationTranscriber",
+                  "note": "हिन्दी, ไทย, Tiếng Việt — with punctuation opted in"
+                }
+              ],
+              "via": "on-device speech"
+            },
+            {
+              "title": "Rules cleanup",
+              "note": "Always runs: filler words removed, punctuation and spacing normalised"
+            },
+            {
+              "title": "On-device model polish",
+              "note": "Apple Intelligence devices only; falls back silently to the rules result",
+              "via": "optional"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Result canvas",
+                  "note": "Copy or share the cleaned text"
+                },
+                {
+                  "title": "Keyboard extension",
+                  "note": "Inserts straight into whatever field you were typing in"
+                }
+              ],
+              "via": "App Group"
+            }
+          ],
+          "notes": [
+            "There is no network code in either target — nothing is collected or uploaded",
+            "Transcripts are deliberately not serialisable, so they cannot be persisted by accident",
+            "Only preferences are stored; shared state is wiped on hand-off, session end and launch",
+            "Swift 6 and SwiftUI with zero third-party dependencies"
+          ]
+        }
       }
     },
     {
@@ -188,7 +368,53 @@
             "src": "./assets/img/wellbeing-navi/cover.png",
             "caption": "Creating the encrypted vault — all data stays on the device"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "Every financial calculation runs in the browser, and the whole vault is encrypted with a key derived from your passphrase. A tiny zero-dependency Node server only serves the app and fetches market quotes.",
+          "flow": [
+            {
+              "title": "Passphrase unlock",
+              "note": "Derives a non-extractable AES-256-GCM key; the vault is decrypted in memory",
+              "tech": "WebCrypto · PBKDF2"
+            },
+            {
+              "title": "Profile and holdings",
+              "note": "Risk questionnaire, accounts, assets and life events — all entered by hand"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Risk engine",
+                  "note": "Scores answers into one of five risk levels"
+                },
+                {
+                  "title": "Market quotes",
+                  "note": "Fetched through the local server, with a disk cache and fallbacks"
+                }
+              ],
+              "via": "analysis"
+            },
+            {
+              "title": "Portfolio optimiser",
+              "note": "Mean-variance weights with anchors and drift bands"
+            },
+            {
+              "title": "Projection and rebalancing",
+              "note": "Monte-Carlo success probability, plus the trades that would close the gap"
+            },
+            {
+              "title": "Re-encrypted vault",
+              "note": "Written back to local browser storage on every change",
+              "via": "save"
+            }
+          ],
+          "notes": [
+            "Decision support only — every trade is placed by you at your own broker",
+            "No account credentials are ever stored; holdings are entered manually by design",
+            "Auto-locks after ten idle minutes, dropping the key from memory",
+            "Serves HTTPS on the home network so phones get the secure context encryption needs"
+          ]
+        }
       }
     },
     {
@@ -226,7 +452,52 @@
             "src": "./assets/img/67-mystery-app/cover.png",
             "caption": "The title screen — the whole city is hiding something"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "A Three.js city with the game rules deliberately isolated in their own module, so the project can be ported to Roblox by swapping a single networking file. The only real backend is a small relay for co-op play.",
+          "flow": [
+            {
+              "title": "Input",
+              "note": "Keyboard and mouse, or an on-screen joystick and grab button"
+            },
+            {
+              "title": "City and avatar",
+              "note": "A living metropolis with traffic, townsfolk, weather and day/night",
+              "tech": "Three.js"
+            },
+            {
+              "title": "Event bus",
+              "note": "The single channel between the client and the game rules",
+              "via": "stands in for RemoteEvents"
+            },
+            {
+              "title": "Authoritative game manager",
+              "note": "Validates the grab, advances the mission and applies the coin economy"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Co-op relay",
+                  "note": "A Cloudflare Worker fans messages out to everyone in the room"
+                },
+                {
+                  "title": "Local save",
+                  "note": "Progress, coins, outfits and gear kept in the browser"
+                }
+              ],
+              "via": "rooms / save"
+            },
+            {
+              "title": "Render, HUD and soundtrack",
+              "note": "Minimap, quest log and music that follows the moment"
+            }
+          ],
+          "notes": [
+            "The source layout mirrors Roblox services, so each folder maps to a container in the port",
+            "The relay stores nothing — no accounts, and idle rooms cost nothing while hibernating",
+            "Adding a mission is a single config entry, with a Luau twin kept alongside"
+          ]
+        }
       }
     },
     {
@@ -263,7 +534,50 @@
             "src": "./assets/img/anzac-of-zombies/cover.png",
             "caption": "Character select — pick Ren or Haru, then play solo or co-op"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "One authoritative Node room simulates the entire game thirty times a second; the iPads only send intent and draw the snapshots they receive. The same code ships as a single-player build by swapping the network layer for an in-page shim.",
+          "flow": [
+            {
+              "title": "Two iPads on the home Wi-Fi",
+              "note": "Both open the Mac's address — no install, no accounts"
+            },
+            {
+              "title": "Clients send intent only",
+              "note": "A movement vector at 30 Hz; aiming and kicking are automatic",
+              "via": "WebSocket"
+            },
+            {
+              "title": "Authoritative simulation",
+              "note": "One shared game: movement, kicks, coins, waves, downs and revives",
+              "tech": "Node + ws"
+            },
+            {
+              "title": "Snapshot broadcast",
+              "note": "Rounded positions and an event list, thirty times a second",
+              "via": "30 Hz"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Canvas render",
+                  "note": "Depth-sorted drawing with a fake-3D perspective"
+                },
+                {
+                  "title": "Synthesised audio",
+                  "note": "Sounds triggered by the events in each snapshot"
+                }
+              ],
+              "via": "each frame"
+            }
+          ],
+          "notes": [
+            "Clients never send positions or damage — the server decides everything",
+            "Reconnects are graceful: a stored id resumes your player within a short grace window",
+            "A static build swaps the socket for an in-page server, giving a solo version with no Mac needed",
+            "Every sprite and sound is generated in code — there are no asset files"
+          ]
+        }
       }
     },
     {
@@ -295,7 +609,45 @@
           "Dedupes via local SQLite and auto-archives old entries",
           "No likes, comments or follows — ToS-safe by design",
           "Scheduled with launchd; Python + Notion API"
-        ]
+        ],
+        "architecture": {
+          "summary": "A scheduled Python script that only ever reads from Instagram. It collects tagged posts, dedupes them against a local database and writes the day's batch into Notion for you to action by hand.",
+          "flow": [
+            {
+              "title": "Runs every morning at 7:30",
+              "note": "Scheduled on the Mac; each run writes its own log",
+              "tech": "launchd"
+            },
+            {
+              "title": "Read tagged feeds",
+              "note": "Around 21 Sydney and Melbourne ramen accounts, with delays and jitter"
+            },
+            {
+              "title": "Dedupe against history",
+              "note": "Every post ever reported is remembered, so nothing repeats",
+              "tech": "SQLite"
+            },
+            {
+              "title": "Archive yesterday's rows",
+              "note": "Only pages dated before today, so a same-day re-run loses nothing",
+              "via": "Notion"
+            },
+            {
+              "title": "Write today's batch",
+              "note": "Account, caption, thumbnail, link and a Liked checkbox per post"
+            },
+            {
+              "title": "You act on it by hand",
+              "note": "Open Notion on the phone, tap through and like in the Instagram app"
+            }
+          ],
+          "notes": [
+            "No likes, comments or follows — the script performs no write action on Instagram, by design",
+            "Reading is done from a personal account, never the Aussie Ramenman account",
+            "If a scrape returns nothing the previous batch is left intact, as a failure signal",
+            "Notion clears archived pages after 30 days, so storage stays bounded on its own"
+          ]
+        }
       }
     },
     {
@@ -328,7 +680,47 @@
             "src": "./assets/img/minecraft_kanji_quest/cover.png",
             "caption": "Home screen — KANJIMINE QUEST in a Minecraft style"
           }
-        ]
+        ],
+        "architecture": {
+          "summary": "A no-build static site — a few plain HTML pages and a handful of ES modules. Every episode lives in one JSON file and all progress is kept in the browser.",
+          "flow": [
+            {
+              "title": "Home screen",
+              "note": "Total score so far, over a looping video background"
+            },
+            {
+              "title": "Pick the next episode",
+              "note": "Reads the episode file and finds the first one not yet finished",
+              "tech": "tests.json"
+            },
+            {
+              "title": "Quiz page",
+              "note": "Banner, story, then ten four-choice questions built into the page"
+            },
+            {
+              "title": "Grade and explain",
+              "note": "Answers marked, every explanation revealed, fanfare on a strong score"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Score history",
+                  "note": "The most recent attempts, newest first"
+                },
+                {
+                  "title": "Archive",
+                  "note": "Finished episodes, each with an undo"
+                }
+              ],
+              "via": "browser storage"
+            }
+          ],
+          "notes": [
+            "Three storage keys hold everything: scores, finished episodes and the mute flag",
+            "Converting points into screen time clears scores but keeps finished episodes finished",
+            "No libraries at all — vanilla modules, with the sound effects and music synthesised in code"
+          ]
+        }
       }
     }
   ]
