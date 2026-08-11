@@ -1,8 +1,9 @@
 {
-  "_comment": "Hand-curation layer, keyed by project id. Any field here overrides the generated value and survives every refresh. Use it to rename, hide, feature, reorder, fix a misclassified type/link, or rewrite description/benefit. Items omitted here use fully auto-generated values.",
+  "_comment": "Hand-curation layer, keyed by project id. Any field here overrides the generated value and survives every refresh. Use it to rename, hide, feature, reorder, fix a misclassified type/link/category, or rewrite description/benefit. Items omitted here use fully auto-generated values. `category` groups the Work list (app, ios-app, game, learning, automation, utility) — set it explicitly here so it survives every refresh.",
 
   "matefc-mock-app": {
     "name": "MateFC",
+    "category": "app",
     "hidden": true,
     "featured": true,
     "order": 1
@@ -10,6 +11,7 @@
   "english-vocab": {
     "name": "English Vocabulary",
     "type": "app",
+    "category": "learning",
     "link": "https://shuheifuller.github.io/english-vocab/vocab.html",
     "linkLabel": "Live demo",
     "featured": true,
@@ -17,6 +19,7 @@
   },
   "block-survival": {
     "name": "Block Survival",
+    "category": "game",
     "linkLabel": "Play",
     "featured": true,
     "order": 3
@@ -24,6 +27,7 @@
   "talkio": {
     "name": "Talkio",
     "type": "ios-app",
+    "category": "ios-app",
     "order": 4
   },
   "murmuro": {
@@ -32,25 +36,45 @@
   },
   "wellbeing-navi": {
     "name": "Wellbeing Navi",
+    "category": "app",
     "order": 5
   },
   "67-mystery-app": {
     "name": "67 Mystery",
+    "category": "game",
     "order": 6
   },
   "anzac-of-zombies": {
     "name": "Anzac of Zombies",
+    "category": "game",
     "order": 7
   },
   "aussie-ramenman-insta": {
     "name": "Aussie Ramenman",
+    "category": "automation",
     "hidden": true,
     "order": 8
   },
   "minecraft_kanji_quest": {
     "name": "Minecraft Kanji Quest",
+    "category": "learning",
     "linkLabel": "Play",
     "order": 9
+  },
+  "yado": {
+    "name": "Yado",
+    "category": "automation",
+    "order": 10
+  },
+  "father2": {
+    "name": "Father 2",
+    "category": "game",
+    "order": 11
+  },
+  "youtube-summarizer": {
+    "name": "YouTube Summarizer",
+    "category": "automation",
+    "order": 12
   },
   "tomlog-interviewscript": {
     "name": "Tomlog Interview Script",

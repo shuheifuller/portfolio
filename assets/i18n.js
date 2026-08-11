@@ -66,6 +66,13 @@
       "type.automation": "Automation",
       "type.userscript": "Userscript",
       "type.project": "Project",
+
+      "category.app": "Web apps",
+      "category.ios-app": "iOS apps",
+      "category.game": "Games",
+      "category.learning": "Learning tools",
+      "category.automation": "Automations",
+      "category.utility": "Utilities",
     },
 
     ja: {
@@ -126,6 +133,13 @@
       "type.automation": "自動化",
       "type.userscript": "ユーザースクリプト",
       "type.project": "プロジェクト",
+
+      "category.app": "Web アプリ",
+      "category.ios-app": "iOS アプリ",
+      "category.game": "ゲーム",
+      "category.learning": "学習ツール",
+      "category.automation": "自動化",
+      "category.utility": "ユーティリティ",
     },
   };
 

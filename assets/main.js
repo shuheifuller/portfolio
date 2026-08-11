@@ -3,6 +3,17 @@
 
 const typeLabel = (t) => window.I18N.t("type." + t);
 
+// The Work list groups by category (game, automation, learning tool, …), not a
+// flat list. `category` is an explicit curation field (see data/overrides.json);
+// if a project doesn't set one, it falls back from its `type`.
+const CATEGORY_ORDER = ["app", "ios-app", "game", "learning", "automation", "utility"];
+const CATEGORY_FALLBACK = {
+  app: "app", "ios-app": "ios-app", "html-page": "game",
+  automation: "automation", userscript: "utility", project: "utility",
+};
+const categoryOf = (p) => p.category || CATEGORY_FALLBACK[p.type] || "utility";
+const categoryLabel = (c) => window.I18N.t("category." + c);
+
 function el(tag, cls, text) {
   const n = document.createElement(tag);
   if (cls) n.className = cls;
@@ -63,7 +74,26 @@ async function load() {
       list.appendChild(el("p", "loading", window.I18N.t("work.empty")));
       return;
     }
-    for (const p of items) list.appendChild(renderItem(p));
+
+    // Group into category buckets, preserving the sort order within each.
+    const groups = new Map();
+    for (const p of items) {
+      const c = categoryOf(p);
+      if (!groups.has(c)) groups.set(c, []);
+      groups.get(c).push(p);
+    }
+    const orderedCats = [...CATEGORY_ORDER.filter((c) => groups.has(c)), ...[...groups.keys()].filter((c) => !CATEGORY_ORDER.includes(c))];
+
+    for (const cat of orderedCats) {
+      const group = el("div", "work-group");
+      const head = el("div", "work-group-head");
+      head.appendChild(el("h3", "work-group-title", categoryLabel(cat)));
+      head.appendChild(el("span", "work-group-count", String(groups.get(cat).length)));
+      group.appendChild(head);
+      for (const p of groups.get(cat)) group.appendChild(renderItem(p));
+      list.appendChild(group);
+    }
+
     if (count) count.textContent = window.I18N.t(items.length === 1 ? "work.count_one" : "work.count", { n: items.length });
     decorateOwnerLinks(list);
   } catch (err) {

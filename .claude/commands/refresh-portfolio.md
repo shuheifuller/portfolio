@@ -27,10 +27,12 @@ You are refreshing the auto-populated portfolio in this directory. Work precisel
          `{ "summary": "1–2 sentences on how it's put together", "flow": [ {"title":"Stage", "note":"what it does", "tech":"Library"}, {"via":"WebSocket", "parallel":[{...},{...}]} ], "notes": ["constraint or decision", ...] }`
          Each `flow` entry is one stage, rendered top-to-bottom with arrows; use `parallel` for side-by-side pieces (e.g. client and server) and `via` to label the connector into that stage. Keep 4–7 stages, titles under ~40 chars.
        - Voice: understated, professional, agency-style (match the existing entries). No hype, no exclamation marks. British/AU spelling is fine. Summarise Japanese READMEs into clean English.
-   - Apply any other `overrides.json` fields last (name, type, linkLabel, featured, hidden, order, or a custom `detail`) — overrides always win.
-   - Drop the `readmeExcerpt`, `topics`, `repo`, `source`, `private`, `homepageUrl` fields from the final object. Ensure each item has: `id, name, type, description, benefit, link, linkLabel, tech, updatedAt, featured, hidden, order, detail`.
+   - `category` **groups the Work list** — it's independent of `type` (which is about tech: app/ios-app/html-page/automation). Valid values: `app`, `ios-app`, `game`, `automation`, `learning`, `utility`. Set it explicitly (in `overrides.json` if you can, so it's never lost); if genuinely unset, `assets/main.js` falls back from `type` (`html-page`→`game`, `automation`→`automation`, everything else→`utility`) but that fallback is a last resort, not a substitute for judgement — e.g. a quiz/flashcard app should be `learning`, not whatever its `type` implies.
+   - `i18n.ja`: if the existing `projects.json` already has an `i18n.ja` block, keep it. Otherwise write one — same shape as the English fields (`description`, `benefit`, `detail.tagline`, `detail.overview`, `detail.highlights`, `detail.architecture` with the same `flow`/`notes` structure, and `detail.images[].caption` if images exist). Natural, idiomatic Japanese — not a literal translation. `assets/i18n.js` falls back to English per-field, so a partially-written `i18n.ja` still renders fine; still, aim to fill it in fully for a new project.
+   - Apply any other `overrides.json` fields last (name, type, category, linkLabel, featured, hidden, order, or a custom `detail`) — overrides always win.
+   - Drop the `readmeExcerpt`, `topics`, `repo`, `source`, `private`, `homepageUrl` fields from the final object. Ensure each item has: `id, name, type, category, description, benefit, link, linkLabel, tech, updatedAt, featured, hidden, order, detail, i18n`.
 
-4. **Sort** by `featured` (true first), then `order` (ascending), then `updatedAt` (newest first). Set `generatedAt` to today's date. Keep the top-level `access` string.
+4. **Sort** by `featured` (true first), then `order` (ascending), then `updatedAt` (newest first) — this ordering is computed once and preserved *within* each category group when the page renders (see `assets/main.js`). Set `generatedAt` to today's date. Keep the top-level `access` string.
 
 5. **Write** the result to `data/projects.json` (pretty-printed, 2-space indent).
 
@@ -41,5 +43,6 @@ You are refreshing the auto-populated portfolio in this directory. Work precisel
 ## Notes
 - Never include `private: true` items — `discover.mjs` already filters them, but double-check none slipped through.
 - **No outbound app/repo URLs in `projects.json`** — every row links to its on-site detail page. The apps are shared privately, so the published data must not leak their URLs.
-- Real screenshots go in `assets/img/<id>/` (replace `cover.svg`, or add files and list them in that project's `detail.images` array). Placeholders fill in until then.
+- Real screenshots go in `assets/img/<id>/` (replace `cover.svg`, or add files and list them in that project's `detail.images` array). Placeholders fill in until then — `gen-placeholders.mjs` skips any project that already has `detail.images` set, so it never clutters a real screenshot's folder with an unused SVG.
+- The Work list on the page is grouped by category (Web apps, iOS apps, Games, Learning tools, Automations, Utilities) in that fixed order — new categories fall back to "Utilities" until you add a label for them in `assets/i18n.js` (`category.<slug>` for both `en` and `ja`) and add the slug to `CATEGORY_ORDER` in `assets/main.js`.
 - This command is idempotent: running it twice with no project changes should leave `projects.json` unchanged.

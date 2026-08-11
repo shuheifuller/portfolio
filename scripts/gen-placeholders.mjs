@@ -23,6 +23,10 @@ function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
 
 let wrote = 0;
 for (const p of data.items) {
+  // A project with a real detail.images entry already has a screenshot — never
+  // generate an unused placeholder alongside it (e.g. cover.png + stray cover.svg).
+  if (p.detail && Array.isArray(p.detail.images) && p.detail.images.length) continue;
+
   const dir = join(ROOT, "assets", "img", p.id);
   mkdirSync(dir, { recursive: true });
   const file = join(dir, "cover.svg");
