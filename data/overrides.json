@@ -76,6 +76,12 @@
     "category": "automation",
     "order": 12
   },
+  "mypoi": {
+    "name": "MyPoi",
+    "category": "automation",
+    "order": 13,
+    "_comment": "Local-only, key-gated Cloudflare Worker portal — no real balances or the portal URL are ever published; the screenshot is the app's own built-in demo data"
+  },
   "tomlog-interviewscript": {
     "name": "Tomlog Interview Script",
     "hidden": true,

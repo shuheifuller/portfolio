@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T00:00:00Z",
+  "generatedAt": "2026-08-29T00:00:00Z",
   "owner": "shuheifuller",
   "access": "Shared privately with family and friends.",
   "items": [
@@ -159,14 +159,14 @@
       "name": "English Vocabulary",
       "type": "app",
       "description": "An offline-capable vocabulary PWA with flashcards, quizzes, and a themed wiki of 425 words collected since 2020.",
-      "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device.",
+      "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device, and now lets a new word go straight into the catalogue from the phone.",
       "link": "./project.html?id=english-vocab",
       "linkLabel": "View details",
       "tech": [
         "HTML",
         "PWA"
       ],
-      "updatedAt": "2026-06-14T07:30:22Z",
+      "updatedAt": "2026-08-29T14:31:51+09:00",
       "featured": true,
       "hidden": false,
       "order": 2,
@@ -174,13 +174,14 @@
         "tagline": "A vocabulary PWA built from years of personal notes.",
         "overview": [
           "An offline-capable progressive web app that turns 425 words collected since 2020 into a structured study tool.",
-          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and the whole app is regenerated from a single JSON file by a Python build step."
+          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and the whole app is regenerated from a single JSON file by a Python build step. Adding a word from the phone is now instant, with no confirmation step, and the Japanese translations it generates have gotten noticeably better."
         ],
         "highlights": [
           "425 words spanning 2020–2026",
+          "Add a word from the phone and it's in the catalogue immediately — no confirmation step",
+          "Meaningfully better Japanese translations when a new word is added",
           "Flashcards, quizzes and progress statistics",
           "Themed wiki: business, idioms, Aussie slang, medical, legal, social",
-          "Installable PWA — works offline on phone or desktop",
           "Generated from one JSON file — the repo is the database"
         ],
         "images": [
@@ -239,18 +240,19 @@
       "i18n": {
         "ja": {
           "description": "2020 年から集めた 425 語を、フラッシュカード・クイズ・テーマ別 Wiki にまとめた、オフライン対応の単語 PWA。",
-          "benefit": "散らばっていた単語メモを、どの端末でも使える学習ツールに変えます。",
+          "benefit": "散らばっていた単語メモを、どの端末でも使える学習ツールに変えます。スマホから新しい単語をその場でそのままカタログに追加できるようになりました。",
           "detail": {
             "tagline": "長年の単語メモからつくった学習 PWA。",
             "overview": [
               "2020 年から書きためた 425 語を、体系立った学習ツールに変えたオフライン対応の Web アプリです。",
-              "フラッシュカードとクイズに加えて、ビジネス・イディオム・オーストラリア英語・医療・法律・社会といったテーマ別の Wiki を併設。アプリ全体は、ひとつの JSON から Python でまるごと生成されます。"
+              "フラッシュカードとクイズに加えて、ビジネス・イディオム・オーストラリア英語・医療・法律・社会といったテーマ別の Wiki を併設。アプリ全体は、ひとつの JSON から Python でまるごと生成されます。スマホからの単語追加は確認ステップなしで即座に反映されるようになり、自動生成される日本語訳の精度も目に見えて良くなりました。"
             ],
             "highlights": [
               "2020〜2026 年の 425 語",
+              "スマホから追加した単語は確認なしで即座にカタログへ反映",
+              "新規追加時の日本語訳の精度が大きく向上",
               "フラッシュカード、クイズ、学習状況の統計",
               "テーマ別 Wiki：ビジネス、イディオム、豪州英語、医療、法律、社会",
-              "PWA としてインストール可能。スマホでもパソコンでもオフラインで動作",
               "ひとつの JSON から生成 — リポジトリがそのままデータベース"
             ],
             "images": [
@@ -1354,15 +1356,15 @@
       "name": "Yado",
       "type": "automation",
       "category": "automation",
-      "description": "A nightly automation that aggregates for-sale listings from Tokyo and Karuizawa property portals into one dashboard, tracking new listings and price drops.",
-      "benefit": "Surfaces new listings and price drops across four portals in one place each morning, with agent contact details included, instead of checking four sites by hand.",
+      "description": "A nightly automation that aggregates for-sale listings from Tokyo, Saitama, Tsukuba and Karuizawa property portals into one dashboard, tracking new listings, price drops and flood risk.",
+      "benefit": "Surfaces new listings and price drops across several portals and cities each morning — with flood-risk and green-space filtering, and delisted listings verified before they're removed — instead of checking sites by hand.",
       "link": "./project.html?id=yado",
       "linkLabel": "View details",
       "tech": [
         "Node.js",
         "Cheerio"
       ],
-      "updatedAt": "2026-08-11T22:52:02Z",
+      "updatedAt": "2026-08-29T04:09:21+09:00",
       "featured": false,
       "hidden": false,
       "order": 10,
@@ -1370,19 +1372,20 @@
         "tagline": "A nightly watch over Tokyo & Karuizawa property listings.",
         "overview": [
           "物件ウォッチ collects for-sale listings from Japanese property portals — SUUMO, LIFULL HOME'S, 三井のリハウス, cowcamo — into one self-contained HTML dashboard, checking nightly for anything new.",
-          "Every listing is normalised onto one schema, diffed against a local store so a listing is \"new\" exactly once, and price changes are kept as history rather than overwritten. A price drop earns its own badge and its own tab."
+          "Every listing is normalised onto one schema, diffed against a local store so a listing is \"new\" exactly once, and price changes are kept as history rather than overwritten. The search has grown since launch: more cities (including Saitama and Tsukuba), a green-space proximity score, flood-risk filtering, and stricter verification before a listing is ever marked delisted."
         ],
         "highlights": [
           "Nightly incremental run at 02:00, plus a deeper weekly full sweep",
+          "Now covers Tokyo, Saitama, Tsukuba and Karuizawa — over 300 listings tracked",
+          "Green-space proximity score and flood-risk filtering added to the search",
           "Normalises Japanese price, area and walk-time formats onto one schema",
           "Price drops tracked as history, not overwritten — with a dedicated badge and tab",
-          "Portals with restrictive terms stay one-click manual searches, never scraped",
-          "Respects robots.txt and each site's terms; paced with backoff, not hammering"
+          "Every delisted listing is re-verified before removal, not just assumed sold"
         ],
         "images": [
           {
             "src": "./assets/img/yado/cover.png",
-            "caption": "The dashboard — 73 listings tracked across four portals, filterable by ward, size and features"
+            "caption": "The dashboard — 300+ listings across Tokyo, Saitama, Tsukuba and Karuizawa, with flood-risk and green-space filters"
           }
         ],
         "architecture": {
@@ -1428,25 +1431,26 @@
       },
       "i18n": {
         "ja": {
-          "description": "東京・軽井沢の不動産ポータルの売り物件を毎晩集約し、新着と値下げを追跡するダッシュボード自動化。",
-          "benefit": "4つのポータルを毎朝手作業で見て回る代わりに、新着と値下げを仲介の連絡先つきでひとつにまとめて表示します。",
+          "description": "東京・埼玉・つくば・軽井沢の不動産ポータルの売り物件を毎晩集約し、新着・値下げ・浸水リスクを追跡するダッシュボード自動化。",
+          "benefit": "複数のポータル・都市の新着と値下げを、浸水リスクや緑地の近さでの絞り込みつきで毎朝ひとつにまとめて表示。掲載終了も確認してから外すので、手作業で見て回る必要がありません。",
           "detail": {
             "tagline": "東京・軽井沢の物件情報を、毎晩見守る。",
             "overview": [
               "物件ウォッチは、SUUMO・LIFULL HOME'S・三井のリハウス・cowcamo の売り物件情報を、ひとつの自己完結した HTML ダッシュボードに集約し、毎晩新着をチェックします。",
-              "すべての物件をひとつのスキーマに正規化し、手元のストアと突き合わせて重複なく「新着」を判定。価格の変動は上書きせず履歴として保持し、値下げには専用のバッジとタブが用意されています。"
+              "すべての物件をひとつのスキーマに正規化し、手元のストアと突き合わせて重複なく「新着」を判定。価格の変動は上書きせず履歴として保持し、値下げには専用のバッジとタブが用意されています。公開以降、対象エリアは拡大を続けており（埼玉・つくばを追加）、緑地の近さスコアや浸水リスクでの絞り込みも加わり、掲載終了の判定はより厳密な確認を経るようになりました。"
             ],
             "highlights": [
               "毎晩 02:00 の差分実行と、週次の深いフルスイープ",
+              "東京・埼玉・つくば・軽井沢まで対象を拡大 — 300件超を追跡",
+              "緑地の近さスコアと浸水リスクによる絞り込みを追加",
               "日本語の価格・面積・徒歩分数の表記をひとつのスキーマに正規化",
               "値下げは履歴として記録 — 専用バッジとタブつき",
-              "規約が厳しいポータルは自動取得せず、ワンクリックの手動検索のまま",
-              "robots.txt と各サイトの規約を尊重。バックオフで、連打はしない"
+              "掲載終了は都度確認してから除外。売却済みと決めつけない"
             ],
             "images": [
               {
                 "src": "./assets/img/yado/cover.png",
-                "caption": "ダッシュボード — 4つのポータルから73件を追跡。区・広さ・設備で絞り込み可能"
+                "caption": "ダッシュボード — 東京・埼玉・つくば・軽井沢で300件超を追跡。浸水リスク・緑地フィルターつき"
               }
             ],
             "architecture": {
@@ -1760,6 +1764,150 @@
                 "動画・音声ファイルはローカルに一切ダウンロードしない。保存されるのは書き起こしと要約のみ",
                 "Claude Code のスキルとして組み込み済み。リンクを共有するだけで一連の処理が起動",
                 "複数動画を一度の実行でまとめて処理できる"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mypoi",
+      "name": "MyPoi",
+      "type": "automation",
+      "category": "automation",
+      "description": "A dashboard that pulls several loyalty-point and mile accounts into one view — total balance, expiry countdowns, monthly net change, and pending sign-up bonuses.",
+      "benefit": "Turns scattered point balances across several loyalty programmes into one glance each week, with an expiry countdown so points don't quietly lapse unused.",
+      "link": "./project.html?id=mypoi",
+      "linkLabel": "View details",
+      "tech": [
+        "Cloudflare Workers",
+        "Cloudflare KV"
+      ],
+      "updatedAt": "2026-08-23T09:50:00+09:00",
+      "featured": false,
+      "hidden": false,
+      "order": 13,
+      "detail": {
+        "tagline": "One dashboard for every loyalty point balance.",
+        "overview": [
+          "A personal dashboard that combines several point and mile accounts — store points, card points, airline miles — into a single running total, with a chart of the combined balance over time.",
+          "Balances are entered by hand or read from an already-logged-in browser with help from Claude, which stops the moment a login screen or two-factor prompt appears rather than ever touching credentials itself. A key-gated portal keeps it private: without the key, every request gets a plain 404, so the address itself gives nothing away."
+        ],
+        "highlights": [
+          "One running total across every loyalty account, charted over time",
+          "Expiry countdown for time-limited points, so nothing quietly lapses",
+          "Tracks pending sign-up bonuses and when they're expected to land",
+          "Semi-automated updates read balances from an already-logged-in browser — never handles a password",
+          "Key-gated: without it, every request gets a plain 404"
+        ],
+        "images": [
+          {
+            "src": "./assets/img/mypoi/cover.png",
+            "caption": "The dashboard with its built-in demo data — balance trend, expiry countdown and pending bonuses"
+          }
+        ],
+        "architecture": {
+          "summary": "A self-contained page reads and writes its numbers through a small Cloudflare Worker, which sits behind a key-gated cookie so the dashboard is invisible without it. Updates come by hand, or semi-automatically by having Claude read balances from an already-open, logged-in browser tab.",
+          "flow": [
+            {
+              "title": "Update a balance",
+              "note": "Typed in directly, or read from a logged-in browser tab",
+              "tech": "no passwords handled"
+            },
+            {
+              "title": "Worker authenticates the request",
+              "note": "Checks a key-derived cookie; anything else gets a plain 404",
+              "via": "Cloudflare Worker"
+            },
+            {
+              "title": "Stored in Cloudflare KV",
+              "note": "The single source of truth; a local JSON file mirrors it as a backup"
+            },
+            {
+              "title": "Dashboard reads on load",
+              "note": "One self-contained page, no rebuild needed after a balance changes"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "Trend chart",
+                  "note": "Inline SVG, stacked by account, no charting library"
+                },
+                {
+                  "title": "Expiry & pending bonuses",
+                  "note": "Countdown cards for time-limited points and sign-up offers"
+                }
+              ]
+            }
+          ],
+          "notes": [
+            "No password is ever entered or stored — a semi-automated update stops at any login or 2FA screen for the person to finish",
+            "Without the access key, every request returns a plain 404 — the hostname gives nothing away",
+            "The screenshot shown here is the app's own built-in demo data, not a real balance"
+          ]
+        }
+      },
+      "i18n": {
+        "ja": {
+          "description": "複数のポイント・マイル口座をひとつにまとめたダッシュボード。合計残高、失効カウントダウン、月間の増減、進行中の入会特典を表示。",
+          "benefit": "あちこちに散らばったポイント残高を、週に一度の一覧で把握できるようにします。失効カウントダウンつきなので、気づかないうちに失効することもありません。",
+          "detail": {
+            "tagline": "すべてのポイント残高を、ひとつのダッシュボードで。",
+            "overview": [
+              "店舗ポイント、カードポイント、マイルなど複数のポイント口座をひとつの合計にまとめ、推移をチャートで確認できる個人用ダッシュボードです。",
+              "残高は手入力するか、Claude の力を借りてログイン済みのブラウザから読み取ります。ログイン画面や二段階認証が出た時点で止まり、認証情報そのものには一切触れません。鍵付きポータルで非公開性を保っており、鍵が無ければすべてのリクエストがただの404を返すため、URLが漏れても中身は開きません。"
+            ],
+            "highlights": [
+              "すべてのポイント口座の合計をひとつにまとめ、推移をチャート表示",
+              "期間限定ポイントの失効カウントダウンで、気づかないうちの失効を防止",
+              "進行中の入会特典と着地予定日を追跡",
+              "半自動更新はログイン済みブラウザから残高を読み取るだけ — パスワードは扱わない",
+              "鍵付き — 鍵が無ければすべてのリクエストがただの404"
+            ],
+            "images": [
+              {
+                "src": "./assets/img/mypoi/cover.png",
+                "caption": "組み込みのデモデータを表示したダッシュボード — 残高推移・失効カウントダウン・進行中の案件"
+              }
+            ],
+            "architecture": {
+              "summary": "自己完結したページが、小さな Cloudflare Worker を介して数値を読み書きします。鍵付きのクッキーの裏に隠れているため、鍵が無ければダッシュボードの存在自体が見えません。更新は手入力か、ログイン済みのブラウザタブから Claude が半自動で読み取ります。",
+              "flow": [
+                {
+                  "title": "残高を更新",
+                  "note": "手入力するか、ログイン済みのブラウザタブから読み取る",
+                  "tech": "パスワードは扱わない"
+                },
+                {
+                  "title": "Worker がリクエストを認証",
+                  "note": "鍵から導いたクッキーを確認。それ以外はただの404",
+                  "via": "Cloudflare Worker"
+                },
+                {
+                  "title": "Cloudflare KV に保存",
+                  "note": "唯一の真実。ローカルの JSON がバックアップとして残る"
+                },
+                {
+                  "title": "ダッシュボードが読み込み時に取得",
+                  "note": "自己完結した1ページ。残高が変わっても再デプロイ不要"
+                },
+                {
+                  "parallel": [
+                    {
+                      "title": "推移チャート",
+                      "note": "インライン SVG によるアカウント別の積み上げ表示。ライブラリ不使用"
+                    },
+                    {
+                      "title": "失効・進行中の案件",
+                      "note": "期間限定ポイントと入会特典のカウントダウンカード"
+                    }
+                  ]
+                }
+              ],
+              "notes": [
+                "パスワードは一切入力・保存しない — 半自動更新はログインや2段階認証の画面で必ず止まり、本人が続きを行う",
+                "アクセス鍵が無ければすべてのリクエストがただの404 — ホスト名自体が何も明かさない",
+                "ここに載せたスクリーンショットはアプリ組み込みのデモデータであり、実際の残高ではない"
               ]
             }
           }
