@@ -25,7 +25,8 @@ async function load() {
     const res = await fetch("./data/projects.json", { cache: "no-cache" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    const raw = (data.items || []).find((x) => x.id === id);
+    // Hidden projects must not be reachable by guessing ?id= either.
+    const raw = (data.items || []).find((x) => x.id === id && !x.hidden);
     const p = raw ? window.I18N.loc(raw) : null;
 
     root.innerHTML = "";
@@ -52,9 +53,11 @@ async function load() {
     const imgs = imagesFor(p);
     const gallery = el("div", imgs.length > 1 ? "gallery multi" : "gallery");
     for (const im of imgs) {
+      const src = window.Safe.safeAssetSrc(im.src);
+      if (!src) continue; // never load an off-site image (tracking pixel) from data
       const fig = el("figure", "shot");
       const img = el("img");
-      img.src = im.src;
+      img.src = src;
       img.alt = im.caption || `${p.name} preview`;
       img.loading = "lazy";
       fig.appendChild(img);
@@ -176,12 +179,13 @@ async function renderOwnerArea(area, id) {
     area.appendChild(el("h3", null, window.I18N.t("detail.ownerLinks")));
     const list = el("div", "owner-links");
     for (const l of mine) {
-      if (l.url) {
-        const a = el("a", "owner-link");
-        a.href = l.url;
+      const href = window.Safe.safeExternalHref(l.url);
+      if (href) {
+        const a = el("a", "owner-link", String(l.label) + " ");
+        a.href = href;
         a.target = "_blank";
-        a.rel = "noopener";
-        a.innerHTML = `${l.label} <span class="arrow">↗</span>`;
+        a.rel = "noopener noreferrer";
+        a.appendChild(el("span", "arrow", "↗"));
         list.appendChild(a);
       } else {
         list.appendChild(el("p", "meta-note", l.label));
@@ -191,9 +195,9 @@ async function renderOwnerArea(area, id) {
   }
   const lockBtn = el("a", "owner-unlock", window.I18N.t("detail.lock"));
   lockBtn.href = "#";
-  lockBtn.addEventListener("click", (e) => {
+  lockBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    window.Vault.lock();
+    await window.Vault.lock(); // must finish deleting the stored key before re-rendering
     renderOwnerArea(area, id);
   });
   area.appendChild(lockBtn);

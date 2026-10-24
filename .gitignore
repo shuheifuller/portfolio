@@ -5,3 +5,5 @@ automation/*.log
 data/projects.raw.json
 # Owner-only link vault source — never publish the plaintext
 data/links.private.json
+# Hidden projects: kept locally so curation isn't lost, never published
+data/archive/

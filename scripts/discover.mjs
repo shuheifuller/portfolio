@@ -18,7 +18,7 @@ import { homedir } from "node:os";
 // ---------------------------------------------------------------------------
 // Config
 // ---------------------------------------------------------------------------
-const GH_OWNER = "shuheifuller";                 // GitHub username (NOT the macOS user `shuheiuto`)
+const GH_OWNER = "shuheifuller";                 // GitHub username (not the local macOS account name)
 const INCLUDE_PRIVATE = false;                   // never leak private repos onto a public page
 // Private repos the owner has explicitly chosen to SHOW on the portfolio.
 // Only name/description/detail appear — the published page never carries URLs

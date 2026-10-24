@@ -8,7 +8,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/refresh.sh</string>
+    <string>__PORTFOLIO_DIR__/automation/refresh.sh</string>
   </array>
 
   <!-- Run once a day at 09:00 local time. -->
@@ -22,8 +22,8 @@
   <false/>
 
   <key>StandardOutPath</key>
-  <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/launchd.out.log</string>
+  <string>__PORTFOLIO_DIR__/automation/launchd.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/shuheiuto/dev/Personal/Shuhei's Portfolio/automation/launchd.err.log</string>
+  <string>__PORTFOLIO_DIR__/automation/launchd.err.log</string>
 </dict>
 </plist>

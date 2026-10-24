@@ -43,9 +43,10 @@ function renderItem(raw) {
 
   // Every row links to its own detail page on this site — no outbound app links.
   const actions = el("div", "work-actions");
-  const a = el("a", "work-link");
-  a.href = p.link || `./project.html?id=${encodeURIComponent(p.id)}`;
-  a.innerHTML = `${window.I18N.t("work.viewDetails")} <span class="arrow">→</span>`;
+  const a = el("a", "work-link", window.I18N.t("work.viewDetails") + " ");
+  const detailHref = `./project.html?id=${encodeURIComponent(p.id)}`;
+  a.href = window.Safe.safeInternalHref(p.link, detailHref);
+  a.appendChild(el("span", "arrow", "→"));
   actions.appendChild(a);
   item.dataset.id = raw.id;
   item.appendChild(actions);
@@ -108,12 +109,12 @@ async function decorateOwnerLinks(list) {
   const links = await window.Vault.load();
   if (!links) return;
   for (const item of list.querySelectorAll(".work-item")) {
-    const first = (links[item.dataset.id] || []).find((l) => l.url);
+    const first = (links[item.dataset.id] || []).find((l) => window.Safe.safeExternalHref(l.url));
     if (!first) continue;
     const a = el("a", "owner-ext");
-    a.href = first.url;
+    a.href = window.Safe.safeExternalHref(first.url);
     a.target = "_blank";
-    a.rel = "noopener";
+    a.rel = "noopener noreferrer";
     a.title = first.label;
     a.textContent = "↗";
     item.querySelector(".work-actions").appendChild(a);

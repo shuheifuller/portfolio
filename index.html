@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; manifest-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shuhei Uto — Apps, games & automations</title>
   <meta name="description" content="A working portfolio of apps, web pages, and automations built with Claude Code and Visual Studio." />
-  <link rel="preconnect" href="https://rsms.me/" />
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-  <link rel="stylesheet" href="./assets/styles.css?v=3" />
+  <link rel="stylesheet" href="./assets/styles.css?v=4" />
 </head>
 <body>
   <header class="nav">
@@ -33,7 +34,7 @@
       </p>
       <div class="hero-meta">
         <span data-i18n="hero.location">Sydney, Australia</span>
-        <a href="https://github.com/shuheifuller" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://github.com/shuheifuller" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         <a href="mailto:shoeheyu@gmail.com">shoeheyu@gmail.com</a>
       </div>
     </section>
@@ -99,15 +100,15 @@
   <footer class="footer wrap">
     <span>© <span id="year">2026</span> Shuhei Uto</span>
     <span>
-      <a href="https://github.com/shuheifuller" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/shuheifuller" target="_blank" rel="noopener noreferrer">GitHub</a>
       &nbsp;·&nbsp;
       <a href="mailto:shoeheyu@gmail.com">Email</a>
     </span>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="./assets/i18n.js?v=3"></script>
-  <script src="./assets/vault.js?v=3"></script>
-  <script src="./assets/main.js?v=3"></script>
+  <script src="./assets/core.js?v=4"></script>
+  <script src="./assets/i18n.js?v=4"></script>
+  <script src="./assets/vault.js?v=4"></script>
+  <script src="./assets/main.js?v=4"></script>
 </body>
 </html>

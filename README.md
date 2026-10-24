@@ -66,21 +66,42 @@ Direct links to each app exist on the site but are **encrypted** — visitors ca
 recover them; you unlock them once per device.
 
 - `data/links.private.json` — the plaintext links (**gitignored**, never published).
-- `scripts/lock-links.mjs` — encrypts it: `node scripts/lock-links.mjs "<passphrase>"`
+- `scripts/lock-links.mjs` — encrypts it: `node scripts/lock-links.mjs` (prompts for the passphrase, hidden; refuses it as an argument)
   → writes `data/links.enc.json` (AES-256-GCM, safe to publish/commit).
 - `assets/vault.js` — browser-side decrypt (PBKDF2 + WebCrypto).
 
 **To unlock on one of your devices:** open any project detail page → click the small
 **"owner unlock"** link under *Access* → enter the passphrase. The device stays unlocked
-(localStorage) until you click **"lock this device"**. When unlocked, detail pages show
+(a non-extractable key in IndexedDB — never the passphrase itself) until you click **"lock this device"**. When unlocked, detail pages show
 "Owner links" (open app / source) and the Work list gains small ↗ direct-open arrows.
 
 **To change links or passphrase:** edit `data/links.private.json`, re-run
-`node scripts/lock-links.mjs "<new-passphrase>"`, commit `data/links.enc.json`, push.
+`node scripts/lock-links.mjs`, commit `data/links.enc.json`, push. Re-encrypting locks every device.
+The ciphertext is public and can be attacked offline, so use 5+ random words (the script enforces a minimum).
 
 Honest scope: the encryption genuinely protects the URLs in the published site, but the
 apps themselves live at guessable public URLs (`shuheifuller.github.io/<repo>/`) and the
 repos are public — this hides the links, it does not authenticate the apps.
+
+## Security model
+
+A static site on GitHub Pages: no server code (no PHP, no database), so server-side
+vulnerability classes don't apply. What's in place for the browser side:
+
+- **Content-Security-Policy** (`<meta>`): scripts, styles, images and fetches from this
+  origin only; no inline script, no third-party hosts (fonts are system fonts).
+- **Untrusted data stays data**: project copy is rendered with `textContent`; every href and
+  image src from `projects.json` passes an allowlist in `assets/core.js` (same-site pages,
+  local `assets/img/` only; owner links https only), so a prompt-injected README can't
+  smuggle in a `javascript:` link or a tracking pixel.
+- **Anti-framing** in `core.js` (GitHub Pages can't send `X-Frame-Options`).
+- **No referrer**, and **noindex/noarchive** — the site is for family & friends, not search.
+- **Hidden = unpublished**: hidden projects live only in the gitignored `data/archive/`.
+- **No personal identifiers** in copy or screenshots (children's names, school, budgets,
+  balances, third parties, plans) — see the rules at the top of
+  `.claude/commands/refresh-portfolio.md`.
+- The optional scheduled refresh **never commits or pushes**; it validates its output and
+  leaves the diff for you to review.
 
 ## Adding real screenshots
 
@@ -115,7 +136,7 @@ python3 -m http.server 8000
 `automation/refresh.sh` runs discovery + a headless `claude -p` prose pass, then commits & pushes **only if `projects.json` changed** (Pages redeploys on push). To run it daily at 09:00:
 
 ```bash
-cp automation/com.shuhei.portfolio.refresh.plist ~/Library/LaunchAgents/
+sed "s|__PORTFOLIO_DIR__|$PWD|g" automation/com.shuhei.portfolio.refresh.plist > ~/Library/LaunchAgents/com.shuhei.portfolio.refresh.plist
 launchctl load ~/Library/LaunchAgents/com.shuhei.portfolio.refresh.plist
 # dry-run once before trusting the schedule:
 bash automation/refresh.sh   # check automation/refresh.log
@@ -132,7 +153,7 @@ To stop it: `launchctl unload ~/Library/LaunchAgents/com.shuhei.portfolio.refres
 
 ## Notes
 
-- GitHub owner is `shuheifuller` (set once at the top of `discover.mjs`); the local macOS user is `shuheiuto` — don't confuse them in URLs.
+- GitHub owner is `shuheifuller` (set once at the top of `discover.mjs`).
 - Tampermonkey/Greasemonkey `*.user.js` files are auto-detected as `userscript` once they exist under `~/dev`.
 - Private repos (e.g. `family-wealth-dashboard`) are excluded in the script, so their data never reaches the published JSON.
 - The black-cat feature image (`assets/img/black-cat.jpg`) is a free [Pexels](https://www.pexels.com/photo/black-cat-28119304/) photo (Pexels License — free for commercial use, no attribution required); the monochrome low-key look is applied in CSS. Swap the file to use your own cat's photo.
