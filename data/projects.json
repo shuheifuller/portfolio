@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T00:00:00Z",
+  "generatedAt": "2026-11-14T00:00:00Z",
   "owner": "shuheifuller",
   "access": "Shared privately with family and friends.",
   "items": [
@@ -7,33 +7,37 @@
       "id": "english-vocab",
       "name": "English Vocabulary",
       "type": "app",
-      "description": "An offline-capable vocabulary PWA with flashcards, quizzes, and a themed wiki of 425 words collected since 2020.",
-      "benefit": "Turns years of scattered vocabulary notes into a structured study tool that works on any device, and now lets a new word go straight into the catalogue from the phone.",
+      "description": "A vocabulary PWA built around daily spaced-repetition sessions — a home dashboard, streaks and a word of the day over 425 words collected since 2020.",
+      "benefit": "Turns years of scattered vocabulary notes into a few minutes of review a day, scheduled so each word comes back just before it would be forgotten.",
       "link": "./project.html?id=english-vocab",
       "linkLabel": "View details",
       "tech": [
         "HTML",
         "PWA"
       ],
-      "updatedAt": "2026-08-29T14:31:51+09:00",
+      "updatedAt": "2026-10-25T00:00:00Z",
       "featured": true,
       "hidden": false,
       "order": 2,
       "detail": {
-        "tagline": "A vocabulary PWA built from years of personal notes.",
+        "tagline": "A few minutes a day, scheduled so words stick.",
         "overview": [
-          "An offline-capable progressive web app that turns 425 words collected since 2020 into a structured study tool.",
-          "It pairs a flashcard and quiz trainer with a themed wiki — business, idioms, Australian slang, medical, legal and social English — and the whole app is regenerated from a single JSON file by a Python build step. Adding a word from the phone is now instant, with no confirmation step, and the Japanese translations it generates have gotten noticeably better."
+          "An offline-capable progressive web app that turns 425 words collected since 2020 into a daily habit. Each day it builds a short session of words that are due plus a handful of new ones, and schedules every word's next appearance from how well you knew it.",
+          "A home dashboard shows today's progress ring, the session size and time, a weekly streak and a word of the day; the whole app is still regenerated from a single JSON file by a Python build step, with progress kept on the device."
         ],
         "highlights": [
-          "425 words spanning 2020–2026",
-          "Add a word from the phone and it's in the catalogue immediately — no confirmation step",
-          "Meaningfully better Japanese translations when a new word is added",
-          "Flashcards, quizzes and progress statistics",
-          "Themed wiki: business, idioms, Aussie slang, medical, legal, social",
+          "Daily sessions: due words plus a few new ones, about three minutes",
+          "SM-2-style scheduling — three grades, intervals that stretch as words stick",
+          "Home dashboard with a progress ring, weekly streak and word of the day",
+          "425 words spanning 2020–2026, with the newest meanings corrected",
+          "Add a word from the phone and it's in the catalogue immediately",
           "Generated from one JSON file — the repo is the database"
         ],
         "images": [
+          {
+            "src": "./assets/img/english-vocab/home.jpg",
+            "caption": "The home dashboard — today's session, streak and word of the day"
+          },
           {
             "src": "./assets/img/english-vocab/cover.png",
             "caption": "The word list — 425 entries, filterable by year, part of speech and mastery"
@@ -65,7 +69,7 @@
               "parallel": [
                 {
                   "title": "The PWA",
-                  "note": "Flashcards, quiz and stats; installable and offline-capable"
+                  "note": "Daily spaced-repetition sessions, dashboard and streaks; offline-capable"
                 },
                 {
                   "title": "Themed wiki",
@@ -79,32 +83,36 @@
             }
           ],
           "notes": [
-            "The HTML app is generated — it is never edited by hand",
+            "The HTML app is generated from one template — it is never edited by hand",
+            "Scheduling and streaks run entirely on the device; nothing about your study leaves it",
             "Raw imports are immutable and the activity log is append-only",
-            "Study progress and words added on the phone live in browser storage",
             "A GitHub Action can run the same lookup → generate → commit flow unattended"
           ]
         }
       },
       "i18n": {
         "ja": {
-          "description": "2020 年から集めた 425 語を、フラッシュカード・クイズ・テーマ別 Wiki にまとめた、オフライン対応の単語 PWA。",
-          "benefit": "散らばっていた単語メモを、どの端末でも使える学習ツールに変えます。スマホから新しい単語をその場でそのままカタログに追加できるようになりました。",
+          "description": "毎日の間隔反復を中心にした単語学習 PWA。2020 年から集めた 425 語を、ホーム画面・連続記録・今日の一語で続けられるように。",
+          "benefit": "散らばっていた単語メモを、1 日数分の復習に変えます。忘れかける直前にもう一度出てくるよう、単語ごとに次の出番を決めます。",
           "detail": {
-            "tagline": "長年の単語メモからつくった学習 PWA。",
+            "tagline": "1 日数分。忘れる前にもう一度。",
             "overview": [
-              "2020 年から書きためた 425 語を、体系立った学習ツールに変えたオフライン対応の Web アプリです。",
-              "フラッシュカードとクイズに加えて、ビジネス・イディオム・オーストラリア英語・医療・法律・社会といったテーマ別の Wiki を併設。アプリ全体は、ひとつの JSON から Python でまるごと生成されます。スマホからの単語追加は確認ステップなしで即座に反映されるようになり、自動生成される日本語訳の精度も目に見えて良くなりました。"
+              "2020 年から書きためた 425 語を、毎日の習慣に変えるオフライン対応の Web アプリです。その日に復習すべき単語と少しの新しい単語で短いセッションを作り、覚え具合から各単語の次の出番を決めます。",
+              "ホーム画面には今日の進み具合のリング、セッションの量と時間、1 週間の連続記録、今日の一語が並びます。アプリ全体は今もひとつの JSON から Python で生成し、学習の記録は端末に保存します。"
             ],
             "highlights": [
-              "2020〜2026 年の 425 語",
-              "スマホから追加した単語は確認なしで即座にカタログへ反映",
-              "新規追加時の日本語訳の精度が大きく向上",
-              "フラッシュカード、クイズ、学習状況の統計",
-              "テーマ別 Wiki：ビジネス、イディオム、豪州英語、医療、法律、社会",
+              "毎日のセッション：復習の単語＋少しの新しい単語、約 3 分",
+              "SM-2 方式のスケジュール — 3 段階の評価で、覚えるほど間隔が伸びる",
+              "進み具合のリング、週の連続記録、今日の一語が並ぶホーム画面",
+              "2020〜2026 年の 425 語。新しい単語の意味も修正済み",
+              "スマホから追加した単語は即座にカタログへ",
               "ひとつの JSON から生成 — リポジトリがそのままデータベース"
             ],
             "images": [
+              {
+                "src": "./assets/img/english-vocab/home.jpg",
+                "caption": "ホーム画面 — 今日の復習、連続記録、今日の一語"
+              },
               {
                 "src": "./assets/img/english-vocab/cover.png",
                 "caption": "単語一覧 — 425 件を年・品詞・習熟度で絞り込み"
@@ -136,7 +144,7 @@
                   "parallel": [
                     {
                       "title": "PWA",
-                      "note": "フラッシュカード、クイズ、統計。インストールしてオフラインでも"
+                      "note": "毎日の間隔反復、ホーム画面、連続記録。オフラインでも動作"
                     },
                     {
                       "title": "テーマ別 Wiki",
@@ -150,10 +158,10 @@
                 }
               ],
               "notes": [
-                "HTML アプリは生成物です。直接は編集しません",
+                "HTML アプリはひとつのテンプレートからの生成物。直接は編集しない",
+                "スケジュールと連続記録はすべて端末内で計算。学習の記録は外に出ない",
                 "取り込み元のデータは変更せず、活動ログは追記のみ",
-                "学習の進み具合と、スマホで足した単語はブラウザ側に保存",
-                "同じ流れを GitHub Actions から自動で回すこともできます"
+                "同じ流れを GitHub Actions から自動で回すこともできる"
               ]
             }
           }
@@ -163,41 +171,42 @@
     },
     {
       "id": "block-survival",
-      "name": "Block Survival",
+      "name": "Block Math",
       "type": "html-page",
-      "description": "A Minecraft-flavoured, third-person wave-survival shooter built with Three.js in a single zero-build HTML file.",
-      "benefit": "Gives the family an install-free game that runs in any browser, on desktop or iPad.",
+      "description": "A Minecraft-flavoured maths game for kids: every mob is a times-table or arithmetic question, answered on a number pad before it reaches you.",
+      "benefit": "Turns maths drills into something kids ask to play — with daily missions, streaks and collectable pets that bring them back each day.",
       "link": "./project.html?id=block-survival",
       "linkLabel": "View details",
       "tech": [
-        "HTML",
-        "Three.js"
+        "Three.js",
+        "Web Audio"
       ],
-      "updatedAt": "2026-06-14T12:59:12Z",
+      "updatedAt": "2026-08-31T00:00:00Z",
       "featured": true,
       "hidden": false,
       "order": 3,
       "detail": {
-        "tagline": "A Minecraft-flavoured wave-survival shooter in the browser.",
+        "tagline": "Blocky monsters, real maths — a quiz game kids want to play.",
         "overview": [
-          "A third-person, Minecraft-styled survival shooter built with Three.js in a single zero-build HTML file.",
-          "Players fight endless waves of mobs, earn tokens from kills, and upgrade from a pistol all the way to a diamond cannon — playable with keyboard and mouse or with full on-screen iPad controls."
+          "Block Math (ブロックさんすう) started life as a wave-survival shooter and was rebuilt as a maths game for kids: each mob carries a question pitched at a school grade, and answering it correctly on the on-screen number pad is what defeats it.",
+          "A layer of light progression keeps it going between sessions — combos, a permanent level, daily missions, a play streak, achievements and collectable pets that walk beside the player — while the arena changes biome as the grade rises. It is still a single HTML file with no build step."
         ],
         "highlights": [
-          "Endless waves: zombies, skeletons, creepers, spiders, endermen and slimes",
-          "Weapon progression: Pistol → SMG → Rifle → Shotgun → Diamond Cannon",
-          "Stat upgrades for HP, damage, reload and move speed",
-          "Keyboard/mouse and full iPad touch controls",
-          "Single-file Three.js, no build step"
+          "Questions graded to the school year, answered on a big on-screen number pad",
+          "Combos and speed bonuses reward accuracy and fluency, not just speed",
+          "Daily missions, a play streak, 20 achievements and a permanent level",
+          "18 collectable pets, each with a small perk, walking beside the player",
+          "Four biomes — grassland, desert, snow mountain and the Nether — as the grade rises",
+          "Still one zero-build HTML file; progress saved on the device"
         ],
         "images": [
           {
-            "src": "./assets/img/block-survival/cover.png",
-            "caption": "Surviving a wave in the Minecraft-style arena — HUD, tokens and weapon ammo"
+            "src": "./assets/img/block-survival/cover.jpg",
+            "caption": "A times-table question on a skeleton, with a pet wolf at the player's side"
           }
         ],
         "architecture": {
-          "summary": "One HTML file holds the markup, the styles and the entire game. Three.js arrives as an ES module from a CDN at runtime, so there is no build step, no bundler and no server.",
+          "summary": "Still one HTML file holding markup, styles and the whole game, with Three.js loaded as an ES module at runtime. What changed is the loop: a quiz engine now sits at the centre, and a single save object keeps progress on the device between sessions.",
           "flow": [
             {
               "title": "Browser loads index.html",
@@ -205,63 +214,68 @@
               "tech": "No build step"
             },
             {
-              "title": "Procedural setup",
-              "note": "Textures drawn in code; world, mobs and five weapons declared as plain data"
+              "title": "Load the save",
+              "note": "Level, pets, streak, missions and achievements from one local save"
+            },
+            {
+              "title": "Stage and biome",
+              "note": "The grade band picks the questions and the arena's sky, ground and props"
             },
             {
               "parallel": [
                 {
-                  "title": "Input",
-                  "note": "Arrow keys and mouse, plus on-screen sticks and buttons on iPad"
+                  "title": "Quiz engine",
+                  "note": "A question per mob, timed, answered on the number pad"
                 },
                 {
                   "title": "Game loop",
-                  "note": "Wave spawning, mob behaviour and collisions on each frame"
+                  "note": "Mob movement, combo and speed bonuses, boss every tenth stage"
                 }
               ],
               "via": "play"
             },
             {
-              "title": "Raycast hit detection",
-              "note": "Shots are cast against mob meshes; the tracers are cosmetic"
+              "title": "Rewards",
+              "note": "XP, tokens, mission progress and pets — written back to the save"
             },
             {
               "title": "WebGL render + DOM overlays",
-              "note": "Three.js draws the world; HUD and shop sit above it as plain DOM"
+              "note": "Three.js draws the arena; HUD, keypad and menus are plain DOM"
             }
           ],
           "notes": [
-            "Nothing persists — guns, tokens and upgrades reset each session, by design",
-            "Must be served over http(s) so the import map and CDN module resolve",
-            "No asset files at all: textures are generated in code and audio is synthesised"
+            "Progress now persists on the device — one save object, with older saves migrated into it",
+            "Wrong answers cost a combo, not the game — the pacing is built for younger players",
+            "All art and music are generated in code; the soundtrack is layered Web Audio"
           ]
         }
       },
       "i18n": {
         "ja": {
-          "description": "Three.js を使い、ビルド不要の HTML 1 ファイルでつくった Minecraft 風のウェーブ・サバイバル・シューター。",
-          "benefit": "インストール不要で、パソコンでも iPad でも、ブラウザさえあれば家族で遊べます。",
+          "description": "Minecraft 風の、子ども向けさんすうゲーム。敵ひとつひとつが九九や計算の問題になっていて、近づかれる前に数字パッドで答えて倒します。",
+          "benefit": "計算ドリルを「遊びたい」ものに変えます。毎日のミッション、連続プレイ、集められるペットで、毎日自然と戻ってきたくなります。",
           "detail": {
-            "tagline": "ブラウザで動く Minecraft 風サバイバルシューター。",
+            "tagline": "ブロックのモンスターと、本物のさんすう。",
             "overview": [
-              "Three.js で書いた三人称視点のサバイバルシューター。ビルド工程のない HTML 1 ファイルに収まっています。",
-              "次々と押し寄せる敵を倒してトークンを稼ぎ、ピストルからダイヤモンドキャノンまで武器を強化。キーボードとマウスでも、iPad の画面上のスティックでも遊べます。"
+              "ブロックさんすうは、もとはウェーブ制のサバイバルシューターでした。それを子ども向けのさんすうゲームに作り直したものです。敵はそれぞれ学年に合わせた問題を持っていて、画面の数字パッドで正しく答えると倒せます。",
+              "コンボ、ずっと続くレベル、毎日のミッション、連続プレイ日数、実績、そばを歩いてくれるペットといった軽い成長要素で、遊ぶたびに続きたくなる作りです。学年が上がるとステージの景色も変わります。今もビルド不要の HTML 1 ファイルです。"
             ],
             "highlights": [
-              "ゾンビ、スケルトン、クリーパー、スパイダー、エンダーマン、スライムが波状に出現",
-              "武器の強化：ピストル → SMG → ライフル → ショットガン → ダイヤモンドキャノン",
-              "体力・攻撃力・リロード・移動速度のアップグレード",
-              "キーボードとマウス、iPad のタッチ操作に対応",
-              "Three.js の 1 ファイル構成、ビルド工程なし"
+              "学年に合わせた問題を、大きな数字パッドで答える",
+              "コンボとスピードボーナスで、正確さと慣れを評価",
+              "毎日のミッション、連続プレイ、20 の実績、ずっと続くレベル",
+              "18 種類の集められるペット。それぞれ小さな特典つき",
+              "学年に応じて草原・砂漠・雪山・ネザーの 4 つの景色",
+              "今も HTML 1 ファイル。進行状況は端末に保存"
             ],
             "images": [
               {
-                "src": "./assets/img/block-survival/cover.png",
-                "caption": "Minecraft 風のフィールドで応戦中 — HUD、トークン、残弾を表示"
+                "src": "./assets/img/block-survival/cover.jpg",
+                "caption": "スケルトンに九九の問題。プレイヤーのそばにはオオカミのペット"
               }
             ],
             "architecture": {
-              "summary": "HTML 1 ファイルに、マークアップもスタイルもゲーム本体も入っています。Three.js は実行時に CDN から ES モジュールとして読み込むだけなので、ビルドもバンドラもサーバーも要りません。",
+              "summary": "今も HTML 1 ファイルにマークアップ・スタイル・ゲーム全体が入っていて、Three.js は実行時に ES モジュールとして読み込みます。変わったのはゲームの中心で、問題エンジンが加わり、進行状況はひとつのセーブデータとして端末に残るようになりました。",
               "flow": [
                 {
                   "title": "ブラウザが index.html を読む",
@@ -269,41 +283,45 @@
                   "tech": "ビルド不要"
                 },
                 {
-                  "title": "初期化",
-                  "note": "テクスチャはコードで描画。地形・敵・5 種類の武器はすべてデータとして定義"
+                  "title": "セーブを読み込む",
+                  "note": "レベル・ペット・連続日数・ミッション・実績をひとつのセーブから"
+                },
+                {
+                  "title": "ステージと景色",
+                  "note": "学年帯で問題と、空・地面・小物の景色が決まる"
                 },
                 {
                   "parallel": [
                     {
-                      "title": "入力",
-                      "note": "矢印キーとマウス、iPad では画面上のスティックとボタン"
+                      "title": "問題エンジン",
+                      "note": "敵ごとに 1 問。制限時間つきで数字パッドから回答"
                     },
                     {
                       "title": "ゲームループ",
-                      "note": "ウェーブの生成、敵の挙動、当たり判定を毎フレーム処理"
+                      "note": "敵の動き、コンボとスピードボーナス、10 ステージごとのボス"
                     }
                   ],
                   "via": "プレイ"
                 },
                 {
-                  "title": "レイキャストで命中判定",
-                  "note": "射撃は敵メッシュへのレイキャスト。曳光弾は見た目だけ"
+                  "title": "ごほうび",
+                  "note": "経験値・トークン・ミッション進捗・ペットをセーブに書き戻す"
                 },
                 {
                   "title": "WebGL 描画と DOM の重ね合わせ",
-                  "note": "世界は Three.js が描き、HUD とショップは DOM で上に重ねる"
+                  "note": "Three.js がステージを描き、HUD・数字パッド・メニューは DOM"
                 }
               ],
               "notes": [
-                "保存は一切しません。武器もトークンも強化も毎回リセットされる設計です",
-                "インポートマップと CDN のため、http(s) での配信が必要です",
-                "素材ファイルはゼロ。テクスチャはコードで生成し、音も合成しています"
+                "進行状況は端末に保存されるようになりました — ひとつのセーブにまとめ、古いセーブも移行",
+                "間違えても失うのはコンボだけ。小さな子どもに合わせたテンポです",
+                "絵も音楽もすべてコードで生成。BGM は何層にも重ねた Web Audio"
               ]
             }
           }
         }
       },
-      "category": "game"
+      "category": "learning"
     },
     {
       "id": "talkio",
@@ -485,7 +503,7 @@
         "Vite",
         "WebCrypto"
       ],
-      "updatedAt": "2026-07-06T13:10:52Z",
+      "updatedAt": "2026-10-27T00:00:00Z",
       "featured": false,
       "hidden": false,
       "order": 5,
@@ -493,14 +511,17 @@
         "tagline": "A WealthNavi-style robo-advisor that never leaves your device.",
         "overview": [
           "Wellbeing Navi replicates the intelligence of a robo-advisor — risk profiling, mean-variance portfolio construction, Monte-Carlo projections, market-aware recommendations and rebalancing suggestions — as a private tool for the family.",
-          "It deliberately stays a decision-support tool (you place every trade yourself at your own broker), and all data lives in an AES-256-GCM encrypted vault on your own devices: a desktop app on the Mac, and phones over home Wi-Fi."
+          "It deliberately stays a decision-support tool (you place every trade yourself at your own broker), and all data lives in an AES-256-GCM encrypted vault on your own devices: a desktop app on the Mac, and phones over home Wi-Fi.",
+          "A tax module now estimates cross-border returns with a CSV worksheet for an accountant, and a security pass raised the vault's key derivation to 600,000 iterations and added guards against doctored or AI-generated statements: any imported balance that moves a figure by more than a quarter has to be confirmed twice."
         ],
         "highlights": [
           "Risk profiling and mean-variance portfolio construction",
           "Monte-Carlo projections and recurring-investment planning",
           "Rebalancing suggestions that track the market",
           "Everything encrypted on-device — no server, no account",
-          "Desktop app plus phone access over home Wi-Fi"
+          "Desktop app plus phone access over home Wi-Fi",
+          "Cross-border tax estimates, checked by 62 self-tests against published figures",
+          "Guards against doctored or AI-generated statements: large changes need a second confirmation"
         ],
         "images": [
           {
@@ -551,7 +572,8 @@
             "Decision support only — every trade is placed by you at your own broker",
             "No account credentials are ever stored; holdings are entered manually by design",
             "Auto-locks after ten idle minutes, dropping the key from memory",
-            "Serves HTTPS on the home network so phones get the secure context encryption needs"
+            "Serves HTTPS on the home network so phones get the secure context encryption needs",
+            "Imported statements are treated as untrusted: big swings need a second confirmation, and restoring a backup first saves a safety copy"
           ]
         }
       },
@@ -563,14 +585,17 @@
             "tagline": "端末の外に出ない、WealthNavi 型のロボアドバイザー。",
             "overview": [
               "リスク診断、平均分散法による資産配分、モンテカルロによる将来予測、市況をふまえた提案の更新、リバランスの提案 — ロボアドバイザーの中身を、家族のための道具として再現しました。",
-              "ただし発注はしません（売買はすべて自分の証券口座で行います）。データは AES-256-GCM で暗号化して自分の端末に保存し、Mac のデスクトップアプリと、家庭内 Wi-Fi 経由のスマホから使えます。"
+              "ただし発注はしません（売買はすべて自分の証券口座で行います）。データは AES-256-GCM で暗号化して自分の端末に保存し、Mac のデスクトップアプリと、家庭内 Wi-Fi 経由のスマホから使えます。",
+              "税額の見積もり機能が加わり、国をまたぐ申告を試算して税理士向けの CSV も出力できます。あわせてセキュリティを見直し、保管庫の鍵導出を 60 万回に引き上げ、改ざんや AI 生成の明細への備えを加えました。取り込んだ残高で数値が 4 分の 1 以上動く場合は、2 回確認しないと反映されません。"
             ],
             "highlights": [
               "リスク診断と、平均分散法による資産配分",
               "モンテカルロによる将来予測と積立の計画",
               "市況をふまえたリバランスの提案",
               "すべて端末内で暗号化 — サーバーもアカウントもなし",
-              "Mac のアプリと、家庭内 Wi-Fi 経由のスマホ表示"
+              "Mac のアプリと、家庭内 Wi-Fi 経由のスマホ表示",
+              "国をまたぐ税額の見積もり。公開されている数値に対する 62 の自己テストで検証",
+              "改ざん・AI 生成の明細への備え：大きな変動は 2 回の確認が必要"
             ],
             "images": [
               {
@@ -621,7 +646,8 @@
                 "あくまで判断の材料です。発注は必ず自分の証券口座で行います",
                 "口座の認証情報は一切保存せず、保有資産は手で入力する設計です",
                 "10 分放置すると自動でロックし、鍵をメモリから捨てます",
-                "暗号化 API に必要な安全なコンテキストのため、家庭内では HTTPS で配信します"
+                "暗号化 API に必要な安全なコンテキストのため、家庭内では HTTPS で配信します",
+                "取り込んだ明細は信頼しないデータとして扱う：大きな変動は再確認、バックアップの復元前には安全用のコピーを保存"
               ]
             }
           }
@@ -642,7 +668,7 @@
         "Vite",
         "WebSocket"
       ],
-      "updatedAt": "2026-07-08T02:21:48Z",
+      "updatedAt": "2026-10-25T00:00:00Z",
       "featured": false,
       "hidden": false,
       "order": 6,
@@ -650,12 +676,16 @@
         "tagline": "Find the 67 — a scavenger hunt across a whole city.",
         "overview": [
           "A mysterious \"67\" hides somewhere in a full Brookhaven-style metropolis — downtown, mall, stadium, farm, marina, funfair, two climbable mountains and an island offshore. Read the clues, track it down, and strike the legendary 67 pose.",
-          "Forty missions (and counting) mix classic hunts with citizen interviews and random crime events; coins earned catching thieves buy bikes, boats, jetpacks and outfits, each unlocking bonus events. Friends join the same city through multiplayer rooms, and progress auto-saves in the browser. Built as a Three.js prototype to port to Roblox Studio."
+          "Forty missions (and counting) mix classic hunts with citizen interviews and random crime events; coins earned catching thieves buy bikes, boats, jetpacks and outfits, each unlocking bonus events. Friends join the same city through multiplayer rooms, and progress auto-saves in the browser. Built as a Three.js prototype to port to Roblox Studio.",
+          "Since then the world has grown south to Lake Suwa — a mountain lake with a torii in the water, a tiled-roof Japanese house to explore and dragonflies to sneak up on — and a sports corner now hosts TABLE TENNIS 67, a first-person match with six strokes and a real arc over the net. A home-building loop grades your plot, and a What's New panel tracks every update."
         ],
         "highlights": [
           "A ~1200×1200-stud living city with townsfolk, traffic and wildlife",
           "40 missions: hunts, citizen interviews, and thief chases",
           "67 Shop: bicycle, motorboat, jetpack and outfits with bonus events",
+          "Lake Suwa: a mountain lake, a Kawara House to explore, and dragonfly catching",
+          "TABLE TENNIS 67 — first-person matches with six strokes and aimed shots",
+          "A home-building loop that grades your plot and expands your lot",
           "Multiplayer rooms — host or join a friend's city",
           "Three.js prototype designed to port to Roblox Studio"
         ],
@@ -663,6 +693,10 @@
           {
             "src": "./assets/img/67-mystery-app/cover.png",
             "caption": "The title screen — the whole city is hiding something"
+          },
+          {
+            "src": "./assets/img/67-mystery-app/table-tennis.jpg",
+            "caption": "TABLE TENNIS 67 — a first-person match against the club player"
           }
         ],
         "architecture": {
@@ -707,7 +741,8 @@
           "notes": [
             "The source layout mirrors Roblox services, so each folder maps to a container in the port",
             "The relay stores nothing — no accounts, and idle rooms cost nothing while hibernating",
-            "Adding a mission is a single config entry, with a Luau twin kept alongside"
+            "Adding a mission is a single config entry, with a Luau twin kept alongside",
+            "New areas and mini-games are self-contained world modules, and a changelog module drives the in-game What's New panel"
           ]
         }
       },
@@ -719,12 +754,16 @@
             "tagline": "街じゅうを舞台にした「67」さがし。",
             "overview": [
               "Brookhaven 風の大きな街 — 中心街、モール、スタジアム、農場、マリーナ、遊園地、登れるふたつの山、沖合の島 — のどこかに「67」が隠れています。手がかりを読んで見つけ出し、伝説の 67 ポーズを決めましょう。",
-              "40 のミッションは、王道の宝さがしから住民への聞き込み、突発的な犯人追跡まで。泥棒を捕まえて得たコインで自転車・ボート・ジェットパック・衣装を買うと、それぞれ専用のイベントが開きます。友だちとは合言葉で同じ街に集合でき、進み具合はブラウザに自動保存。Roblox Studio への移植を見据えた Three.js 版です。"
+              "40 のミッションは、王道の宝さがしから住民への聞き込み、突発的な犯人追跡まで。泥棒を捕まえて得たコインで自転車・ボート・ジェットパック・衣装を買うと、それぞれ専用のイベントが開きます。友だちとは合言葉で同じ街に集合でき、進み具合はブラウザに自動保存。Roblox Studio への移植を見据えた Three.js 版です。",
+              "その後、世界は南の諏訪湖まで広がりました。湖の中に鳥居が立つ山の湖、探検できる瓦屋根の日本家屋、そっと近づいて捕まえるトンボ。スポーツコーナーには、6 種類の打ち方と本物の放物線でネットを越える一人称の TABLE TENNIS 67 も加わりました。家づくりは区画を採点してくれるようになり、「What's New」でアップデートの履歴も見られます。"
             ],
             "highlights": [
               "住民・車・動物が行き交う、広大な街",
               "40 のミッション：宝さがし、聞き込み、泥棒の追跡",
               "67 ショップ：自転車、モーターボート、ジェットパック、衣装と専用イベント",
+              "諏訪湖：山の湖、探検できる瓦の家、トンボ捕り",
+              "TABLE TENNIS 67 — 6 種類の打ち方と狙い打ちの一人称の試合",
+              "区画を採点して広げていく家づくり",
               "ルーム機能で、友だちと同じ街に集合",
               "Roblox Studio への移植を前提とした Three.js 版"
             ],
@@ -732,6 +771,10 @@
               {
                 "src": "./assets/img/67-mystery-app/cover.png",
                 "caption": "タイトル画面 — 街のどこかに、何かが隠れている"
+              },
+              {
+                "src": "./assets/img/67-mystery-app/table-tennis.jpg",
+                "caption": "TABLE TENNIS 67 — クラブの選手と一人称で対戦"
               }
             ],
             "architecture": {
@@ -776,7 +819,8 @@
               "notes": [
                 "ソースの構成は、Roblox のサービス構成に対応させてあります",
                 "中継サーバーは何も保存せず、アカウントも不要。無人の部屋は休止します",
-                "ミッションの追加は設定 1 件。Luau 版も並行して用意しています"
+                "ミッションの追加は設定 1 件。Luau 版も並行して用意しています",
+                "新しいエリアやミニゲームは独立したワールドモジュール。ゲーム内の What's New は変更履歴モジュールから生成"
               ]
             }
           }
@@ -1365,125 +1409,134 @@
       "name": "YouTube Summarizer",
       "type": "automation",
       "category": "automation",
-      "description": "A command-line tool that uploads a YouTube video to a Gemini Notebook, has it transcribed, and writes the transcript plus simple and detailed markdown summaries.",
-      "benefit": "Turns any video into written notes to skim or search, without watching or rewatching it — usable from the terminal or as a one-line Claude Code skill.",
+      "description": "A phone-to-Mac relay that turns YouTube videos into searchable notes: share a video from the phone, and a Mac at home transcribes and summarises it into a personal library.",
+      "benefit": "Captures a video in one tap from the phone's Share sheet and turns it into notes you can search and ask follow-up questions about later — without the video being downloaded.",
       "link": "./project.html?id=youtube-summarizer",
       "linkLabel": "View details",
       "tech": [
         "Python",
-        "Gemini Notebook"
+        "Cloudflare Workers",
+        "D1"
       ],
-      "updatedAt": null,
+      "updatedAt": "2026-10-25T00:00:00Z",
       "featured": false,
       "hidden": false,
       "order": 12,
       "detail": {
-        "tagline": "Turn any YouTube video into markdown notes.",
+        "tagline": "Share a video from the phone; read the notes later.",
         "overview": [
-          "A command-line tool that uploads a YouTube video to a Gemini Notebook, waits for Google to transcribe it, and writes three markdown files locally: the full transcript, a simple summary, and a detailed one.",
-          "It's also wired in as a Claude Code skill, so pasting a video URL in chat can trigger the whole pipeline without touching the terminal."
+          "What began as a command-line summariser is now a small system: an iOS Share-sheet shortcut sends a video link to a job queue in the cloud, and an agent on a Mac at home picks it up, has it transcribed in a Gemini Notebook, and writes back a transcript plus simple and detailed summaries.",
+          "A key-gated phone portal lists the whole library with search, shows job progress, and lets you ask follow-up questions about any one video — each answered from that video alone. The original command-line tool and Claude Code skill still work alongside it."
         ],
         "highlights": [
-          "Full transcript plus simple and detailed markdown summaries per video",
-          "Batches multiple videos in one run",
-          "Language, transcript, and re-run options via command-line flags",
-          "Also available as a Claude Code skill — just share a link",
-          "No video or audio is downloaded — transcription happens on Google's side"
+          "One tap from the iOS Share sheet, via a signed shortcut",
+          "A cloud job queue with stages, retries and an agent-online indicator",
+          "The Mac only makes outbound requests — its sign-in never leaves the machine",
+          "Searchable library plus per-video follow-up questions",
+          "Jobs submitted while the Mac sleeps simply wait in the queue",
+          "Key-gated portal: anyone without the key gets a plain 404"
         ],
         "architecture": {
-          "summary": "A command-line tool that hands a video off to a Gemini Notebook for transcription and writes the result back as local markdown — no video is ever downloaded, and it doubles as a Claude Code skill.",
+          "summary": "The work happens on a Mac at home, but the Mac is never exposed: a small Cloudflare Worker holds a job queue and the library, the phone talks only to the Worker, and the Mac polls the Worker outbound for work. The Worker never talks to Google.",
           "flow": [
             {
-              "title": "Run from the terminal, or via chat",
-              "note": "A URL and a few flags — language, whether to keep old runs, etc.",
-              "tech": "argparse"
+              "title": "Share a video",
+              "note": "From the phone's Share sheet, or pasted into the portal",
+              "tech": "Signed iOS shortcut"
             },
             {
-              "title": "Upload to a Gemini Notebook",
-              "note": "The video itself stays on Google's infrastructure"
+              "title": "Queued in the cloud",
+              "note": "Jobs with stages, retries and requeue if work stalls",
+              "via": "authenticated POST",
+              "tech": "Workers + D1"
             },
             {
-              "title": "Wait for transcription",
-              "note": "Google transcribes the audio inside the notebook"
+              "title": "Mac agent claims the job",
+              "note": "Polls outbound only — no open ports; keeps the Mac awake only while working"
+            },
+            {
+              "title": "Transcribe and summarise",
+              "note": "Uploaded to a Gemini Notebook; transcript, simple and detailed notes come back"
             },
             {
               "parallel": [
                 {
-                  "title": "transcript.md",
-                  "note": "The full transcript, verbatim"
+                  "title": "Library",
+                  "note": "Searchable notes per video, written back to the Worker"
                 },
                 {
-                  "title": "simple.md",
-                  "note": "A short, skimmable summary"
-                },
-                {
-                  "title": "detailed.md",
-                  "note": "A fuller, structured summary"
+                  "title": "Follow-up questions",
+                  "note": "Answered from that one video, in a fresh conversation"
                 }
               ]
             }
           ],
           "notes": [
-            "No video or audio file is ever downloaded locally — only the transcript and summaries are",
-            "Wired into Claude Code as a skill, so a shared link alone can trigger the whole pipeline",
-            "Handles multiple videos in a single run"
+            "The Mac's sign-in stays on the Mac — the cloud side never touches Google",
+            "Separate keys for the phone and the Mac agent, so the shortcut can't pose as the agent",
+            "Without the key every request gets a plain 404; the page carries a hash-pinned CSP",
+            "The library holds a personal watch history, so it's deliberately not pictured here"
           ]
         }
       },
       "i18n": {
         "ja": {
-          "description": "YouTube 動画を Gemini Notebook にアップロードして文字起こしさせ、簡易版・詳細版の要約と全文書き起こしを Markdown で出力するコマンドラインツール。",
-          "benefit": "動画を見返さなくても、あとから読んだり検索したりできるメモに変換します。ターミナルからでも、Claude Code のスキルとしてリンクを渡すだけでも使えます。",
+          "description": "スマホから共有した YouTube 動画を、自宅の Mac が文字起こし・要約し、検索できるノートとしてまとめるスマホ→Mac の中継システム。",
+          "benefit": "スマホの共有シートからワンタップで動画を送り、あとで検索したり追加の質問をしたりできるノートに変えます。動画そのものはダウンロードしません。",
           "detail": {
-            "tagline": "YouTube 動画を Markdown のメモに変換する。",
+            "tagline": "スマホで共有して、あとでノートを読む。",
             "overview": [
-              "YouTube 動画を Gemini Notebook にアップロードして Google に文字起こしさせ、全文の書き起こしと、簡易版・詳細版の要約という3つの Markdown ファイルをローカルに出力するコマンドラインツールです。",
-              "Claude Code のスキルとしても組み込まれているので、チャットに動画のリンクを貼るだけでターミナルを触らずに一連の処理を起動できます。"
+              "もとはコマンドラインの要約ツールでしたが、今は小さなシステムになりました。iOS の共有シートのショートカットが動画のリンクをクラウドのジョブキューに送り、自宅の Mac のエージェントがそれを受け取って Gemini Notebook で文字起こしし、全文と簡易版・詳細版の要約を書き戻します。",
+              "鍵付きのスマホ用ポータルでは、ライブラリ全体を検索でき、ジョブの進み具合を確認でき、動画ごとに追加の質問もできます（答えはその動画だけから）。元のコマンドラインツールと Claude Code のスキルも引き続き使えます。"
             ],
             "highlights": [
-              "動画ごとに全文書き起こし・簡易要約・詳細要約を出力",
-              "複数動画を一度の実行でまとめて処理",
-              "言語、書き起こしの有無、再実行などをコマンドラインオプションで指定",
-              "Claude Code のスキルとしても利用可能 — リンクを共有するだけ",
-              "動画や音声はダウンロードしない。文字起こしは Google 側で実行"
+              "iOS の共有シートからワンタップ（署名済みショートカット）",
+              "段階・再試行・エージェントのオンライン表示を備えたクラウドのジョブキュー",
+              "Mac は外向きの通信だけ — サインイン情報は Mac から出ない",
+              "検索できるライブラリと、動画ごとの追加質問",
+              "Mac がスリープ中に送ったジョブはキューで待つだけ",
+              "鍵付きポータル。鍵が無ければただの 404"
             ],
             "architecture": {
-              "summary": "動画を Gemini Notebook に渡して文字起こしさせ、結果をローカルの Markdown として書き出すコマンドラインツールです。動画そのものはダウンロードせず、Claude Code のスキルとしても機能します。",
+              "summary": "処理は自宅の Mac で行いますが、Mac 自体は外に公開しません。小さな Cloudflare Worker がジョブキューとライブラリを持ち、スマホは Worker とだけ通信し、Mac は外向きに Worker へ仕事を取りに行きます。Worker が Google と通信することはありません。",
               "flow": [
                 {
-                  "title": "ターミナルから、またはチャットから起動",
-                  "note": "URL といくつかのオプション（言語、過去実行の保持など）",
-                  "tech": "argparse"
+                  "title": "動画を共有",
+                  "note": "スマホの共有シートから、またはポータルに貼り付け",
+                  "tech": "署名済み iOS ショートカット"
                 },
                 {
-                  "title": "Gemini Notebook にアップロード",
-                  "note": "動画本体は Google 側のインフラにとどまる"
+                  "title": "クラウドのキューへ",
+                  "note": "段階・再試行つきのジョブ。止まったら再投入",
+                  "via": "認証つき POST",
+                  "tech": "Workers + D1"
                 },
                 {
-                  "title": "文字起こしを待つ",
-                  "note": "Notebook 内で Google が音声を文字起こし"
+                  "title": "Mac のエージェントが受け取る",
+                  "note": "外向きのポーリングのみで、ポートは開けない。処理中だけスリープを防ぐ"
+                },
+                {
+                  "title": "文字起こしと要約",
+                  "note": "Gemini Notebook にアップロードし、全文・簡易版・詳細版のノートが返る"
                 },
                 {
                   "parallel": [
                     {
-                      "title": "transcript.md",
-                      "note": "全文の書き起こし"
+                      "title": "ライブラリ",
+                      "note": "動画ごとの検索できるノートを Worker に書き戻す"
                     },
                     {
-                      "title": "simple.md",
-                      "note": "ざっと読める簡易要約"
-                    },
-                    {
-                      "title": "detailed.md",
-                      "note": "構成立った詳細要約"
+                      "title": "追加の質問",
+                      "note": "その動画だけを元に、新しい会話で回答"
                     }
                   ]
                 }
               ],
               "notes": [
-                "動画・音声ファイルはローカルに一切ダウンロードしない。保存されるのは書き起こしと要約のみ",
-                "Claude Code のスキルとして組み込み済み。リンクを共有するだけで一連の処理が起動",
-                "複数動画を一度の実行でまとめて処理できる"
+                "Mac のサインイン情報は Mac から出ない — クラウド側は Google に一切触れない",
+                "スマホ用と Mac エージェント用で鍵を分け、ショートカットがエージェントになりすませない",
+                "鍵が無ければすべてただの 404。ページにはハッシュ固定の CSP",
+                "ライブラリは個人の視聴履歴なので、あえてここには載せていません"
               ]
             }
           }
@@ -1495,139 +1548,294 @@
       "name": "MyPoi",
       "type": "automation",
       "category": "automation",
-      "description": "A dashboard that pulls several loyalty-point and mile accounts into one view — total balance, expiry countdowns, monthly net change, and pending sign-up bonuses.",
-      "benefit": "Turns scattered point balances across several loyalty programmes into one glance each week, with an expiry countdown so points don't quietly lapse unused.",
+      "description": "A dashboard that gathers a dozen loyalty-point and mile accounts into one comic-panel view — balances collected automatically, with expiry countdowns and earn/spend history.",
+      "benefit": "Turns scattered point balances into one glance, collected on a schedule, with an expiry countdown so points don't quietly lapse unused.",
       "link": "./project.html?id=mypoi",
       "linkLabel": "View details",
       "tech": [
+        "Playwright",
         "Cloudflare Workers",
         "Cloudflare KV"
       ],
-      "updatedAt": "2026-08-23T09:50:00+09:00",
+      "updatedAt": "2026-10-25T00:00:00Z",
       "featured": false,
       "hidden": false,
       "order": 13,
       "detail": {
         "tagline": "One dashboard for every loyalty point balance.",
         "overview": [
-          "A personal dashboard that combines several point and mile accounts — store points, card points, airline miles — into a single running total, with a chart of the combined balance over time.",
-          "Balances are entered by hand or read from an already-logged-in browser with help from Claude, which stops the moment a login screen or two-factor prompt appears rather than ever touching credentials itself. A key-gated portal keeps it private: without the key, every request gets a plain 404, so the address itself gives nothing away."
+          "A personal dashboard that combines a dozen point and mile accounts into one running total, now redrawn as manga panels — bold outlines, a speech-bubble total and a pace badge that compares this month with the last.",
+          "A collector now visits each site on its own, reusing a browser profile the owner signed into once by hand, and reads balances, expiring points and history without ever handling a password. Sites whose terms forbid automation stay manual-entry, and the portal stays key-gated: without the key, every request gets a plain 404."
         ],
         "highlights": [
-          "One running total across every loyalty account, charted over time",
-          "Expiry countdown for time-limited points, so nothing quietly lapses",
-          "Tracks pending sign-up bonuses and when they're expected to land",
-          "Semi-automated updates read balances from an already-logged-in browser — never handles a password",
-          "Key-gated: without it, every request gets a plain 404"
+          "Balances collected automatically from a once-signed-in browser profile — no passwords stored",
+          "Reads by text label rather than page layout, and refuses to record low-confidence numbers",
+          "Sites whose terms forbid automation are kept manual, by design",
+          "Earn and spend history, de-duplicated, alongside the monthly net change",
+          "Manga-panel interface with inline-SVG charts and no external libraries",
+          "Key-gated, with a hash-pinned CSP — without the key, a plain 404"
         ],
         "images": [
           {
             "src": "./assets/img/mypoi/cover.png",
-            "caption": "The dashboard with its built-in demo data — balance trend, expiry countdown and pending bonuses"
+            "caption": "The manga-panel redesign, shown with the app's built-in demo data"
           }
         ],
         "architecture": {
-          "summary": "A self-contained page reads and writes its numbers through a small Cloudflare Worker, which sits behind a key-gated cookie so the dashboard is invisible without it. Updates come by hand, or semi-automatically by having Claude read balances from an already-open, logged-in browser tab.",
+          "summary": "The owner signs into each site once in a visible browser; from then on a Playwright collector reuses that profile headlessly, reads the numbers, and sends them to a small Worker in one authenticated write. The phone portal reads from the Worker. Manual entry still works alongside the collector.",
           "flow": [
             {
-              "title": "Update a balance",
-              "note": "Typed in directly, or read from a logged-in browser tab",
-              "tech": "no passwords handled"
+              "title": "Sign in once, by hand",
+              "note": "Logins and two-factor prompts happen in a visible browser — only session cookies are kept"
             },
             {
-              "title": "Worker authenticates the request",
-              "note": "Checks a key-derived cookie; anything else gets a plain 404",
-              "via": "Cloudflare Worker"
+              "title": "Collector visits each site",
+              "note": "Headless, fixed URLs only, never clicks or submits anything",
+              "tech": "Playwright"
             },
             {
-              "title": "Stored in Cloudflare KV",
-              "note": "The single source of truth; a local JSON file mirrors it as a backup"
+              "title": "Read by text anchors",
+              "note": "Numbers taken from next to their labels; low-confidence reads are skipped"
             },
             {
-              "title": "Dashboard reads on load",
-              "note": "One self-contained page, no rebuild needed after a balance changes"
+              "title": "One authenticated write",
+              "note": "Balances, expiries and history sent together",
+              "via": "key-gated Worker",
+              "tech": "Cloudflare KV"
             },
             {
               "parallel": [
                 {
-                  "title": "Trend chart",
-                  "note": "Inline SVG, stacked by account, no charting library"
+                  "title": "Manga-panel dashboard",
+                  "note": "Total, trend, expiries and earn/spend history"
                 },
                 {
-                  "title": "Expiry & pending bonuses",
-                  "note": "Countdown cards for time-limited points and sign-up offers"
+                  "title": "Login-needed banner",
+                  "note": "Flags any site whose session has expired"
                 }
               ]
             }
           ],
           "notes": [
-            "No password is ever entered or stored — a semi-automated update stops at any login or 2FA screen for the person to finish",
-            "Without the access key, every request returns a plain 404 — the hostname gives nothing away",
-            "The screenshot shown here is the app's own built-in demo data, not a real balance"
+            "No password is ever entered or stored by the collector — it only reuses a session the owner created",
+            "Sites whose terms forbid robots are deliberately manual-only",
+            "Scraped text is treated as data, never instructions, for the AI-assisted adapter tuning",
+            "The screenshot here is the app's own built-in demo data, not a real balance"
           ]
         }
       },
       "i18n": {
         "ja": {
-          "description": "複数のポイント・マイル口座をひとつにまとめたダッシュボード。合計残高、失効カウントダウン、月間の増減、進行中の入会特典を表示。",
-          "benefit": "あちこちに散らばったポイント残高を、週に一度の一覧で把握できるようにします。失効カウントダウンつきなので、気づかないうちに失効することもありません。",
+          "description": "十数のポイント・マイル口座をひとつの漫画コマ風の画面にまとめるダッシュボード。残高は自動で収集し、失効カウントダウンと獲得・利用の履歴も表示。",
+          "benefit": "あちこちのポイント残高を、定期的に自動で集めてひと目で把握。失効カウントダウンつきで、気づかないうちの失効も防ぎます。",
           "detail": {
             "tagline": "すべてのポイント残高を、ひとつのダッシュボードで。",
             "overview": [
-              "店舗ポイント、カードポイント、マイルなど複数のポイント口座をひとつの合計にまとめ、推移をチャートで確認できる個人用ダッシュボードです。",
-              "残高は手入力するか、Claude の力を借りてログイン済みのブラウザから読み取ります。ログイン画面や二段階認証が出た時点で止まり、認証情報そのものには一切触れません。鍵付きポータルで非公開性を保っており、鍵が無ければすべてのリクエストがただの404を返すため、URLが漏れても中身は開きません。"
+              "十数のポイント・マイル口座をひとつの合計にまとめる個人用ダッシュボードで、漫画のコマ割り風に作り直しました。太い枠線、吹き出しの合計額、今月と先月の勢いを比べるバッジつきです。",
+              "収集プログラムが各サイトを自動で巡回するようになりました。所有者が一度だけ手でログインしたブラウザのプロファイルを使い回し、残高・失効予定・履歴を読み取ります。パスワードは一切扱いません。自動化を規約で禁じるサイトは手入力のままにし、ポータルは鍵付きで、鍵が無ければすべてただの 404 です。"
             ],
             "highlights": [
-              "すべてのポイント口座の合計をひとつにまとめ、推移をチャート表示",
-              "期間限定ポイントの失効カウントダウンで、気づかないうちの失効を防止",
-              "進行中の入会特典と着地予定日を追跡",
-              "半自動更新はログイン済みブラウザから残高を読み取るだけ — パスワードは扱わない",
-              "鍵付き — 鍵が無ければすべてのリクエストがただの404"
+              "一度ログインしたブラウザのプロファイルから残高を自動収集 — パスワードは保存しない",
+              "画面のレイアウトではなく見出しの文字を手がかりに読み、自信のない数値は記録しない",
+              "自動化を規約で禁じるサイトは、意図して手入力のまま",
+              "重複を除いた獲得・利用の履歴と、月間の増減",
+              "インライン SVG のチャートを使った漫画コマ風の画面。外部ライブラリなし",
+              "鍵付き、ハッシュ固定の CSP — 鍵が無ければただの 404"
             ],
             "images": [
               {
                 "src": "./assets/img/mypoi/cover.png",
-                "caption": "組み込みのデモデータを表示したダッシュボード — 残高推移・失効カウントダウン・進行中の案件"
+                "caption": "漫画コマ風のリデザイン（アプリ組み込みのデモデータで表示）"
               }
             ],
             "architecture": {
-              "summary": "自己完結したページが、小さな Cloudflare Worker を介して数値を読み書きします。鍵付きのクッキーの裏に隠れているため、鍵が無ければダッシュボードの存在自体が見えません。更新は手入力か、ログイン済みのブラウザタブから Claude が半自動で読み取ります。",
+              "summary": "所有者は各サイトに一度だけ、表示されたブラウザで手でログインします。以後は Playwright の収集プログラムがそのプロファイルを画面なしで使い回して数値を読み、小さな Worker へ認証つきで一度に書き込みます。スマホのポータルは Worker から読みます。手入力も引き続き使えます。",
               "flow": [
                 {
-                  "title": "残高を更新",
-                  "note": "手入力するか、ログイン済みのブラウザタブから読み取る",
-                  "tech": "パスワードは扱わない"
+                  "title": "一度だけ手でログイン",
+                  "note": "ログインや二段階認証は表示されたブラウザで本人が。残るのはセッションのクッキーだけ"
                 },
                 {
-                  "title": "Worker がリクエストを認証",
-                  "note": "鍵から導いたクッキーを確認。それ以外はただの404",
-                  "via": "Cloudflare Worker"
+                  "title": "収集プログラムが各サイトを巡回",
+                  "note": "画面なし・決まった URL のみ。クリックや送信は一切しない",
+                  "tech": "Playwright"
                 },
                 {
-                  "title": "Cloudflare KV に保存",
-                  "note": "唯一の真実。ローカルの JSON がバックアップとして残る"
+                  "title": "見出しの文字を手がかりに読む",
+                  "note": "ラベルの隣の数値を取得。自信のない値は記録しない"
                 },
                 {
-                  "title": "ダッシュボードが読み込み時に取得",
-                  "note": "自己完結した1ページ。残高が変わっても再デプロイ不要"
+                  "title": "認証つきで一度に書き込み",
+                  "note": "残高・失効予定・履歴をまとめて送る",
+                  "via": "鍵付き Worker",
+                  "tech": "Cloudflare KV"
                 },
                 {
                   "parallel": [
                     {
-                      "title": "推移チャート",
-                      "note": "インライン SVG によるアカウント別の積み上げ表示。ライブラリ不使用"
+                      "title": "漫画コマ風ダッシュボード",
+                      "note": "合計・推移・失効予定・獲得と利用の履歴"
                     },
                     {
-                      "title": "失効・進行中の案件",
-                      "note": "期間限定ポイントと入会特典のカウントダウンカード"
+                      "title": "要ログインの表示",
+                      "note": "セッションが切れたサイトを知らせる"
                     }
                   ]
                 }
               ],
               "notes": [
-                "パスワードは一切入力・保存しない — 半自動更新はログインや2段階認証の画面で必ず止まり、本人が続きを行う",
-                "アクセス鍵が無ければすべてのリクエストがただの404 — ホスト名自体が何も明かさない",
-                "ここに載せたスクリーンショットはアプリ組み込みのデモデータであり、実際の残高ではない"
+                "収集プログラムはパスワードを入力も保存もしない — 本人が作ったセッションを使い回すだけ",
+                "ロボットを規約で禁じるサイトは、意図して手入力のみ",
+                "AI に手伝わせる読み取り調整では、取得した文字はデータとして扱い、指示としては扱わない",
+                "ここのスクリーンショットはアプリ組み込みのデモデータで、実際の残高ではない"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "67-password",
+      "name": "67 Password",
+      "type": "ios-app",
+      "category": "ios-app",
+      "description": "An offline, single-user password manager for iPhone built on a two-secret key-derivation design — parked after its encrypted core and iOS interface were complete.",
+      "benefit": "Shows what a zero-knowledge vault takes to build properly: every field encrypted, keys that never leave the device, and 156 tests against published cryptographic test vectors.",
+      "link": "./project.html?id=67-password",
+      "linkLabel": "View details",
+      "tech": [
+        "Swift 6",
+        "SwiftUI",
+        "CryptoKit",
+        "SQLite"
+      ],
+      "updatedAt": "2026-09-28T00:00:00Z",
+      "featured": false,
+      "hidden": false,
+      "order": 14,
+      "detail": {
+        "tagline": "A zero-knowledge password vault for iPhone — parked, not abandoned.",
+        "overview": [
+          "67 Password is an offline password manager for iPhone, written in Swift 6 and SwiftUI with no third-party dependencies. The vault key is derived from two secrets — a master password and a device-held Secret Key — and every item, including its title and username, is stored encrypted in a local SQLite database.",
+          "The encrypted core, a test suite of 156 checks and the main iOS screens (onboarding, Face ID unlock, items, search, generator, settings) were finished before the project was parked: system-wide AutoFill needs a paid developer membership, which outweighed the benefit for a single user."
+        ],
+        "highlights": [
+          "Two-secret key derivation: master password plus a device-held Secret Key",
+          "AES-256-GCM for every item, bound to its slot so ciphertexts can't be swapped",
+          "156 unit tests against published RFC vectors, plus a full UI acceptance run",
+          "Password generator (random, memorable, PIN), strength meter and built-in one-time codes",
+          "Face ID unlock, auto-lock and a clipboard that expires",
+          "Status: parked after phase 2 of 9 — no network code at all"
+        ],
+        "images": [
+          {
+            "src": "./assets/img/67-password/cover.png",
+            "caption": "First launch — encrypted on the device, no servers, no subscriptions"
+          }
+        ],
+        "architecture": {
+          "summary": "Everything runs on the device. Two secrets are stretched and combined into an account key, which unlocks a random vault key, which in turn decrypts each item on demand. Nothing is stored in the clear — not even item titles — and there is no network code.",
+          "flow": [
+            {
+              "title": "Master password + Secret Key",
+              "note": "The Secret Key never leaves the device's Keychain"
+            },
+            {
+              "title": "Derive the account key",
+              "note": "PBKDF2 and HKDF branches combined, with versioned parameters",
+              "tech": "CryptoKit · CommonCrypto"
+            },
+            {
+              "title": "Unwrap the vault key",
+              "note": "A random 256-bit key, itself stored encrypted"
+            },
+            {
+              "title": "Decrypt items on demand",
+              "note": "AES-256-GCM with each ciphertext bound to its own slot",
+              "tech": "SQLite"
+            },
+            {
+              "parallel": [
+                {
+                  "title": "SwiftUI screens",
+                  "note": "Items, search, generator, settings — with Face ID unlock"
+                },
+                {
+                  "title": "Clipboard with expiry",
+                  "note": "Copied secrets stay local and clear themselves"
+                }
+              ]
+            }
+          ],
+          "notes": [
+            "Tests scan the database and its journal files to prove no plaintext ever reaches disk",
+            "A wrong password is detected even on an empty vault, via an encrypted check token",
+            "Parked deliberately: system-wide AutoFill needs a paid developer membership"
+          ]
+        }
+      },
+      "i18n": {
+        "ja": {
+          "description": "2 つの秘密情報による鍵導出で作った、オフライン・個人用の iPhone 向けパスワードマネージャー。暗号化の中核と iOS 画面が完成した段階で一時停止。",
+          "benefit": "ゼロ知識の保管庫をきちんと作るとどうなるかを示します。すべての項目を暗号化し、鍵は端末から出さず、公開された暗号テストベクタに対して 156 のテストで検証しています。",
+          "detail": {
+            "tagline": "iPhone のためのゼロ知識パスワード保管庫 — 中断中、放棄ではなく。",
+            "overview": [
+              "67 Password は、Swift 6 と SwiftUI で書いた iPhone 向けのオフライン・パスワードマネージャーです。外部ライブラリは使っていません。保管庫の鍵はマスターパスワードと端末に保存された Secret Key の 2 つから導き、タイトルやユーザー名を含むすべての項目を暗号化してローカルの SQLite に保存します。",
+              "暗号化の中核、156 のテスト、主要な iOS 画面（初回設定、Face ID ロック解除、項目、検索、パスワード生成、設定）まで完成したところで一時停止しました。システム全体の自動入力には有料の開発者メンバーシップが必要で、1 人で使うには割に合わなかったためです。"
+            ],
+            "highlights": [
+              "2 つの秘密による鍵導出：マスターパスワード＋端末の Secret Key",
+              "すべての項目を AES-256-GCM で暗号化。保存先に紐付け、暗号文の入れ替えを防止",
+              "公開 RFC のテストベクタに対する 156 の単体テストと、UI 全体の受け入れテスト",
+              "パスワード生成（ランダム・覚えやすい・PIN）、強度メーター、ワンタイムコード内蔵",
+              "Face ID でのロック解除、自動ロック、時間で消えるクリップボード",
+              "現状：全 9 段階のうち 2 段階目で一時停止。通信コードは一切なし"
+            ],
+            "images": [
+              {
+                "src": "./assets/img/67-password/cover.png",
+                "caption": "初回起動 — 端末上で暗号化。サーバーなし、サブスクなし"
+              }
+            ],
+            "architecture": {
+              "summary": "すべてが端末上で完結します。2 つの秘密を引き伸ばして組み合わせたアカウント鍵が、ランダムな保管庫の鍵を開き、その鍵で各項目を必要なときだけ復号します。項目のタイトルさえ平文では保存せず、通信のコードもありません。",
+              "flow": [
+                {
+                  "title": "マスターパスワード＋Secret Key",
+                  "note": "Secret Key は端末の Keychain から出ない"
+                },
+                {
+                  "title": "アカウント鍵を導出",
+                  "note": "PBKDF2 と HKDF の 2 系統を組み合わせ、パラメータはバージョン管理",
+                  "tech": "CryptoKit · CommonCrypto"
+                },
+                {
+                  "title": "保管庫の鍵を取り出す",
+                  "note": "ランダムな 256 ビットの鍵。それ自体も暗号化して保存"
+                },
+                {
+                  "title": "必要なときに項目を復号",
+                  "note": "AES-256-GCM。暗号文はそれぞれの保存先に紐付け",
+                  "tech": "SQLite"
+                },
+                {
+                  "parallel": [
+                    {
+                      "title": "SwiftUI の画面",
+                      "note": "項目・検索・生成・設定。Face ID でロック解除"
+                    },
+                    {
+                      "title": "期限つきクリップボード",
+                      "note": "コピーした秘密は端末内にとどまり、自動で消える"
+                    }
+                  ]
+                }
+              ],
+              "notes": [
+                "テストでデータベースとジャーナルファイルを走査し、平文がディスクに出ないことを確認",
+                "暗号化した確認用トークンで、空の保管庫でも間違ったパスワードを検出",
+                "意図的な一時停止：システム全体の自動入力には有料の開発者メンバーシップが必要"
               ]
             }
           }

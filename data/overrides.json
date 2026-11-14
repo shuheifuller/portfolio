@@ -1,6 +1,5 @@
 {
   "_comment": "Hand-curation layer, keyed by project id. Any field here overrides the generated value and survives every refresh. Use it to rename, hide, feature, reorder, fix a misclassified type/link/category, or rewrite description/benefit. Items omitted here use fully auto-generated values. `category` groups the Work list (app, ios-app, game, learning, automation, utility) — set it explicitly here so it survives every refresh.",
-
   "matefc-mock-app": {
     "name": "MateFC",
     "category": "app",
@@ -18,11 +17,12 @@
     "order": 2
   },
   "block-survival": {
-    "name": "Block Survival",
-    "category": "game",
+    "name": "Block Math",
+    "category": "learning",
     "linkLabel": "Play",
     "featured": true,
-    "order": 3
+    "order": 3,
+    "_comment": "Pivoted from a wave-survival shooter to a maths quiz game for kids on 2026-07-30"
   },
   "talkio": {
     "name": "Talkio",
@@ -37,7 +37,8 @@
   "wellbeing-navi": {
     "name": "Wellbeing Navi",
     "category": "app",
-    "order": 5
+    "order": 5,
+    "_comment": "Never name the broker, employer or stock symbols from the tax module, nor the owner tax situation"
   },
   "67-mystery-app": {
     "name": "67 Mystery",
@@ -74,7 +75,8 @@
   "youtube-summarizer": {
     "name": "YouTube Summarizer",
     "category": "automation",
-    "order": 12
+    "order": 12,
+    "_comment": "Now a phone→cloud→Mac relay. Never screenshot the portal: its library is a real watch history"
   },
   "mypoi": {
     "name": "MyPoi",
@@ -82,9 +84,24 @@
     "order": 13,
     "_comment": "Local-only, key-gated Cloudflare Worker portal — no real balances or the portal URL are ever published; the screenshot is the app's own built-in demo data"
   },
+  "gmail-scanner": {
+    "hidden": true,
+    "_comment": "Processes the owner's real email — never publish, even as a description"
+  },
+  "shuhei-s-personal-website": {
+    "hidden": true,
+    "_comment": "Unfinished stub (no content, no commits) — revisit when it ships"
+  },
   "tomlog-interviewscript": {
     "name": "Tomlog Interview Script",
     "hidden": true,
     "order": 7
+  },
+  "67-password": {
+    "name": "67 Password",
+    "type": "ios-app",
+    "category": "ios-app",
+    "order": 14,
+    "_comment": "Parked iOS project. Never mention which password manager the owner actually uses, devices or backup posture; never screenshot SampleData (seeds the owner name)"
   }
 }

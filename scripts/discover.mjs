@@ -23,7 +23,7 @@ const INCLUDE_PRIVATE = false;                   // never leak private repos ont
 // Private repos the owner has explicitly chosen to SHOW on the portfolio.
 // Only name/description/detail appear — the published page never carries URLs
 // (links live in the encrypted vault), so listing here reveals existence only.
-const PRIVATE_ALLOWLIST = new Set(["67-mystery-app", "wellbeing-navi"]);
+const PRIVATE_ALLOWLIST = new Set(["67-mystery-app", "wellbeing-navi", "yado"]);
 const DEV_ROOT = join(homedir(), "dev");
 const SCAN_DIRS = ["Personal", "Family", "Project", "Work"];
 const SKIP_NAMES = new Set([
@@ -31,6 +31,7 @@ const SKIP_NAMES = new Set([
   "cc-knowledge",         // knowledge base, not a deliverable
   "untitled folder",
   ".DS_Store",
+  "Archive",              // retired projects live here
 ]);
 const SKIP_REPOS = new Set(["portfolio"]); // the portfolio must not list itself
 
@@ -174,19 +175,35 @@ function fetchRepos() {
 // ---------------------------------------------------------------------------
 // 2. Local scan
 // ---------------------------------------------------------------------------
+// A folder is a project if it carries any of these markers; otherwise it's a
+// category container (e.g. ~/dev/Personal/Finance/) and we look one level in.
+const PROJECT_MARKERS = [
+  ".git", "package.json", "README.md", "readme.md", "_Overview.md", "index.html",
+  "requirements.txt", "pyproject.toml", "project.yml", "Package.swift",
+];
+const isProjectDir = (dir) => {
+  const entries = listShallow(dir);
+  return entries.some((e) => PROJECT_MARKERS.includes(e) || e.endsWith(".xcodeproj"));
+};
+
 function scanLocal() {
-  const found = []; // { folder, dir, repoName|null }
+  const found = []; // { folder, dir, group, repoName|null }
+  const consider = (dir, name, group, depth) => {
+    if (SKIP_NAMES.has(name) || name.startsWith(".")) return;
+    let st;
+    try { st = statSync(dir); } catch { return; }
+    if (!st.isDirectory()) return;
+    if (isProjectDir(dir)) {
+      const remote = sh("git", ["-C", dir, "remote", "get-url", "origin"]);
+      found.push({ folder: name.normalize("NFC"), dir, group, repoName: repoNameFromRemote(remote) });
+    } else if (depth === 0) {
+      // Category container: scan its children (one level only).
+      for (const child of listShallow(dir)) consider(join(dir, child), child, `${group}/${name}`, 1);
+    }
+  };
   for (const group of SCAN_DIRS) {
     const groupDir = join(DEV_ROOT, group);
-    for (const name of listShallow(groupDir)) {
-      if (SKIP_NAMES.has(name) || name.startsWith(".")) continue;
-      const dir = join(groupDir, name);
-      let st;
-      try { st = statSync(dir); } catch { continue; }
-      if (!st.isDirectory()) continue;
-      const remote = sh("git", ["-C", dir, "remote", "get-url", "origin"]);
-      found.push({ folder: name, dir, group, repoName: repoNameFromRemote(remote) });
-    }
+    for (const name of listShallow(groupDir)) consider(join(groupDir, name), name, group, 0);
   }
   return found;
 }
