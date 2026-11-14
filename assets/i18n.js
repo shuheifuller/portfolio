@@ -43,7 +43,7 @@
       "services.6.body": "Fast, framework-free pages — like this one — that deploy straight to GitHub Pages.",
 
       "contact.heading": "Contact",
-      "contact.pitch": "Have something you'd like built? Let's talk.",
+      "contact.pitch": "Family and friends — you already know how to reach me.",
       "footer.private": "Shared privately with family & friends",
 
       "detail.back": "← All work",
@@ -110,7 +110,7 @@
       "services.6.body": "このページのように、速くてフレームワーク不要。GitHub Pages にそのまま公開できます。",
 
       "contact.heading": "お問い合わせ",
-      "contact.pitch": "つくりたいものがあれば、お気軽にご連絡ください。",
+      "contact.pitch": "家族・友人の皆さんは、いつもの連絡先へどうぞ。",
       "footer.private": "家族と友人向けに限定公開",
 
       "detail.back": "← 一覧へ戻る",
